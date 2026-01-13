@@ -11,31 +11,115 @@
   const tabs = document.querySelectorAll('.sport-icon-tab');
   const modelItems = document.querySelectorAll('.product-model-item');
   const infoItems = document.querySelectorAll('.product-info-item');
+  const mobileCarousel = document.querySelector('.products-mobile-carousel');
 
   let currentProduct = 'baseball';
   const products = ['baseball', 'basic', 'basket', 'polo', 'set'];
   const totalProducts = products.length;
 
+  // Mobile carousel auto-swipe
+  let autoSwipeInterval = null;
+  let currentSlideIndex = 0;
+  const AUTO_SWIPE_DELAY = 5000; // 5 seconds
+
   /**
    * Initialize the products section
    */
   function init() {
-    // Check if all required elements exist
-    if (!tabs.length || !modelItems.length || !infoItems.length) {
-      console.warn('Products section elements not found, skipping initialization');
-      return;
+    // Initialize desktop layout if elements exist
+    if (tabs.length && modelItems.length && infoItems.length) {
+      // Initialize first info item with proper styles
+      if (infoItems[0]) {
+        infoItems[0].style.opacity = '1';
+        infoItems[0].style.transform = 'translateY(0)';
+      }
+
+      // Attach event listeners for desktop
+      attachEventListeners();
+
+      console.log('Products section initialized - 3-column layout with icon tabs');
     }
 
-    // Initialize first info item with proper styles
-    if (infoItems[0]) {
-      infoItems[0].style.opacity = '1';
-      infoItems[0].style.transform = 'translateY(0)';
+    // Initialize mobile carousel auto-swipe
+    if (mobileCarousel) {
+      initMobileCarousel();
+      console.log('Mobile carousel initialized with auto-swipe');
     }
+  }
 
-    // Attach event listeners
-    attachEventListeners();
+  /**
+   * Initialize mobile carousel with auto-swipe
+   */
+  function initMobileCarousel() {
+    const slides = mobileCarousel.querySelectorAll('.product-slide');
+    if (!slides.length) return;
 
-    console.log('Products section initialized - 3-column layout with icon tabs');
+    // Only track scroll position, no pause on interaction
+    mobileCarousel.addEventListener('scroll', handleScroll);
+
+    // Start auto-swipe
+    startAutoSwipe();
+  }
+
+  /**
+   * Start auto-swipe interval
+   */
+  function startAutoSwipe() {
+    if (autoSwipeInterval) return;
+
+    autoSwipeInterval = setInterval(() => {
+      const slides = mobileCarousel.querySelectorAll('.product-slide');
+      if (!slides.length) return;
+
+      currentSlideIndex = (currentSlideIndex + 1) % slides.length;
+      scrollToSlide(currentSlideIndex);
+    }, AUTO_SWIPE_DELAY);
+  }
+
+  /**
+   * Pause auto-swipe
+   */
+  function pauseAutoSwipe() {
+    if (autoSwipeInterval) {
+      clearInterval(autoSwipeInterval);
+      autoSwipeInterval = null;
+    }
+  }
+
+  /**
+   * Resume auto-swipe
+   */
+  function resumeAutoSwipe() {
+    // Delay resuming to allow user to finish interacting
+    setTimeout(() => {
+      startAutoSwipe();
+    }, 3000);
+  }
+
+  /**
+   * Handle scroll to update current slide index
+   */
+  function handleScroll() {
+    const slides = mobileCarousel.querySelectorAll('.product-slide');
+    if (!slides.length) return;
+
+    const scrollLeft = mobileCarousel.scrollLeft;
+    const slideWidth = slides[0].offsetWidth;
+    currentSlideIndex = Math.round(scrollLeft / slideWidth);
+  }
+
+  /**
+   * Scroll to specific slide
+   */
+  function scrollToSlide(index) {
+    const slides = mobileCarousel.querySelectorAll('.product-slide');
+    if (!slides[index]) return;
+
+    const scrollPosition = index * slides[0].offsetWidth;
+    mobileCarousel.scrollTo({
+      left: scrollPosition,
+      behavior: 'smooth'
+    });
   }
 
   /**
