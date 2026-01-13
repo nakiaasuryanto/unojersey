@@ -1727,7 +1727,7 @@ body {
 
 @media (max-width: 768px) {
   .portfolio {
-    padding: var(--spacing-12) 0 var(--spacing-20) 0;
+    padding: var(--spacing-24) 0 var(--spacing-20) 0;
     overflow: visible;
   }
 
