@@ -42,13 +42,14 @@
 
       let progress = 0;
       const targetProgress = 100;
-      const loadingInterval = 30; // Update every 30ms
-      const incrementPerTick = targetProgress / (2000 / loadingInterval); // Complete in ~2 seconds
+      const minDuration = 10000; // 10 seconds minimum
+      const loadingInterval = 50; // Update every 50ms
+      const incrementPerTick = targetProgress / (minDuration / loadingInterval); // Complete in 10 seconds
 
       // Simulate loading progress
       const progressInterval = setInterval(() => {
         // Add some randomness to make it feel more realistic
-        const randomIncrement = incrementPerTick + (Math.random() - 0.5) * 0.5;
+        const randomIncrement = incrementPerTick + (Math.random() - 0.5) * 0.3;
         progress = Math.min(progress + randomIncrement, targetProgress);
 
         // Update UI
@@ -67,35 +68,17 @@
             setTimeout(() => {
               preloader.style.display = 'none';
             }, 600);
-          }, 400);
+          }, 500);
         }
       }, loadingInterval);
 
-      // Listen for actual page load
+      // Listen for actual page load - but don't speed up, let it complete in 10s
       window.addEventListener('load', () => {
-        // If we haven't reached 100% yet, speed up to completion
-        const speedUpInterval = setInterval(() => {
-          if (progress < targetProgress) {
-            progress = Math.min(progress + 5, targetProgress);
-            preloaderBar.style.width = progress + '%';
-            preloaderPercentage.textContent = Math.floor(progress);
-
-            if (progress >= targetProgress) {
-              clearInterval(speedUpInterval);
-              setTimeout(() => {
-                preloader.classList.add('preloader-hidden');
-                setTimeout(() => {
-                  preloader.style.display = 'none';
-                }, 600);
-              }, 300);
-            }
-          } else {
-            clearInterval(speedUpInterval);
-          }
-        }, 50);
+        // Page loaded, just continue the progress animation
+        console.log('Page loaded, continuing preloader animation...');
       });
 
-      // Fallback: force complete after 4 seconds
+      // Fallback: force complete after 12 seconds (in case something goes wrong)
       setTimeout(() => {
         if (!preloader.classList.contains('preloader-hidden')) {
           progress = targetProgress;
@@ -106,9 +89,9 @@
             setTimeout(() => {
               preloader.style.display = 'none';
             }, 600);
-          }, 300);
+          }, 500);
         }
-      }, 4000);
+      }, 12000);
     }
 
     setupGSAP() {

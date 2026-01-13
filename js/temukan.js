@@ -277,13 +277,13 @@ async function handleFormSubmit(e) {
     // Show loading screen
     showScreen('loading');
 
-    // Submit to database
-    try {
-        await submitQuizData();
-    } catch (error) {
-        console.error('Failed to submit quiz data:', error);
-        // Continue to result even if submission fails
-    }
+    // Submit to database - TEMPORARILY DISABLED
+    // try {
+    //     await submitQuizData();
+    // } catch (error) {
+    //     console.error('Failed to submit quiz data:', error);
+    //     // Continue to result even if submission fails
+    // }
 
     // Show result after 1.5 seconds
     setTimeout(() => {
