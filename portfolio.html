@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio - UNO JERSEY</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Design System CSS -->
+  <link rel="stylesheet" href="/css/design-system.css">
+
+  <!-- Portfolio CSS -->
+  <link rel="stylesheet" href="/css/portfolio.css">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-content">
+      <div class="nav-tagline" id="nav-tagline">
+        <span class="nav-tagline-text">Be Uno. <span class="highlight">Be United.</span></span>
+      </div>
+      <div class="nav-logo-center">
+        <a href="/index.html" class="logo-link">
+          <img id="navbar-logo" src="/assets/images/UNO-White.png" alt="UNO JERSEY" class="logo-img navbar-logo-hidden">
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main>
+    <!-- Portfolio Hero -->
+    <section class="portfolio-hero">
+      <div class="hero-background"></div>
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <h1 class="hero-title">
+          <span class="title-line">Karya</span>
+          <span class="title-line highlight">Terbaik Kami</span>
+        </h1>
+        <p class="hero-subtitle">Showcase jersey premium yang telah kami buat untuk tim-tim terbaik</p>
+      </div>
+    </section>
+
+    <!-- Portfolio Filter -->
+    <section class="portfolio-filter">
+      <div class="filter-container">
+        <button class="filter-btn active" data-filter="all">Semua</button>
+        <button class="filter-btn" data-filter="baseball">Baseball</button>
+        <button class="filter-btn" data-filter="football">Football</button>
+        <button class="filter-btn" data-filter="futsal">Futsal</button>
+        <button class="filter-btn" data-filter="basketball">Basketball</button>
+        <button class="filter-btn" data-filter="others">Others</button>
+      </div>
+    </section>
+
+    <!-- Portfolio Grid -->
+    <section class="portfolio-grid">
+      <div class="portfolio-container" id="portfolioContainer">
+        <!-- Items will be populated by JavaScript -->
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="portfolio-cta">
+      <div class="cta-content">
+        <h2 class="cta-title">Ingin Jersey Seperti Ini?</h2>
+        <p class="cta-subtitle">Kreasikan jersey impianmu bersama UNO JERSEY</p>
+        <a href="/kreasikan/index.html" class="btn btn-primary btn-large">
+          Mulai Kreasi
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <!-- Modal Detail -->
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal-container">
+      <button class="modal-close" id="modalClose">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <line x1="18" y1="6" x2="6" y2="18"/>
+          <line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+
+      <div class="modal-content">
+        <!-- Header -->
+        <div class="modal-header">
+          <span class="modal-category" id="modalCategory">Category</span>
+          <h2 class="modal-title" id="modalTitle">Title</h2>
+          <p class="modal-description" id="modalDescription">Description</p>
+        </div>
+
+        <!-- Gallery -->
+        <div class="modal-gallery">
+          <div class="gallery-main">
+            <div class="gallery-image-container">
+              <img src="" alt="" id="galleryMainImage" class="gallery-main-image">
+              <div class="gallery-caption" id="galleryCaption">Caption</div>
+            </div>
+          </div>
+
+          <!-- Gallery Navigation -->
+          <button class="gallery-nav gallery-prev" id="galleryPrev">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <polyline points="15 18 9 12 15 6"/>
+            </svg>
+          </button>
+          <button class="gallery-nav gallery-next" id="galleryNext">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <polyline points="9 18 15 12 9 6"/>
+            </svg>
+          </button>
+
+          <!-- Thumbnails -->
+          <div class="gallery-thumbnails" id="galleryThumbnails">
+            <!-- Thumbnails will be populated by JavaScript -->
+          </div>
+
+          <!-- Gallery Counter -->
+          <div class="gallery-counter" id="galleryCounter">1 / 5</div>
+        </div>
+
+        <!-- Full Description -->
+        <div class="modal-full-description">
+          <p id="modalFullDescription">Full description goes here</p>
+        </div>
+
+        <!-- CTA Button -->
+        <div class="modal-cta">
+          <a href="/kreasikan/index.html" class="btn btn-primary">
+            Buat Jersey Seperti Ini
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer Section -->
+  <section class="footer-section">
+    <div class="footer-split">
+      <div class="footer-split-left">
+        <h2 class="footer-split-title">Kreasikan</h2>
+        <p class="footer-split-subtitle">Design your custom jersey with our easy-to-use builder</p>
+        <a href="/kreasikan/index.html" class="footer-split-button">
+          Start Creating
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </a>
+      </div>
+      <div class="footer-split-right">
+        <h2 class="footer-split-title">Temukan</h2>
+        <p class="footer-split-subtitle">Find the perfect jersey for your team</p>
+        <a href="/temukan.html" class="footer-split-button">
+          Explore Collection
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    <footer class="footer-main">
+      <div class="footer-container">
+        <div class="footer-columns">
+          <div class="footer-column">
+            <h3 class="footer-column-title">Navigasi</h3>
+            <ul class="footer-links">
+              <li><a href="/index.html">Home</a></li>
+              <li><a href="/temukan.html">Temukan</a></li>
+              <li><a href="/portfolio.html">Portfolio</a></li>
+              <li><a href="/kreasikan/index.html">Kreasikan</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h3 class="footer-column-title">Sports</h3>
+            <ul class="footer-links">
+              <li><a href="/index.html#products">Basketball</a></li>
+              <li><a href="/index.html#products">Futsal</a></li>
+              <li><a href="/index.html#products">Volleyball</a></li>
+              <li><a href="/index.html#products">Running</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h3 class="footer-column-title">Hubungi Kami</h3>
+            <ul class="footer-links">
+              <li><a href="https://wa.me/6281234567890">WhatsApp</a></li>
+              <li><a href="https://instagram.com/unojersey">Instagram</a></li>
+              <li><a href="mailto:hello@unojersey.com">Email</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <div class="footer-bottom-brand">
+            <img src="/assets/images/UNO-White.png" alt="UNO JERSEY" class="footer-logo-small">
+            <p class="footer-copyright">&copy; 2024 UNO JERSEY. All rights reserved.</p>
+          </div>
+          <div class="footer-bottom-links">
+            <a href="#">Privacy Policy</a>
+            <span class="divider">•</span>
+            <a href="#">Terms of Service</a>
+          </div>
+          <div class="footer-socials">
+            <a href="https://instagram.com/unojersey" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+              </svg>
+            </a>
+            <a href="https://wa.me/6281234567890" aria-label="WhatsApp">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </section>
+
+  <!-- GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+  <!-- Portfolio JavaScript -->
+  <script src="/js/portfolio/main.js"></script>
+</body>
+</html>
