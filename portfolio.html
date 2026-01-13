@@ -6,25 +6,33 @@
   <title>Portfolio - UNO JERSEY</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
   <!-- Design System CSS -->
   <link rel="stylesheet" href="/css/design-system.css">
 
+  <!-- Homepage CSS (for navbar and footer) -->
+  <link rel="stylesheet" href="/css/homepage.css">
+
   <!-- Portfolio CSS -->
   <link rel="stylesheet" href="/css/portfolio.css">
+
+  <!-- GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 </head>
 <body>
   <!-- Navigation -->
   <nav class="navbar" id="navbar">
     <div class="nav-content">
+      <!-- Tagline (fixed position, only size changes on scroll) -->
       <div class="nav-tagline" id="nav-tagline">
         <span class="nav-tagline-text">Be Uno. <span class="highlight">Be United.</span></span>
       </div>
+
+      <!-- Logo Center (hidden initially, fades in when hero logo transitions) -->
       <div class="nav-logo-center">
-        <a href="/index.html" class="logo-link">
-          <img id="navbar-logo" src="/assets/images/UNO-White.png" alt="UNO JERSEY" class="logo-img navbar-logo-hidden">
-        </a>
+        <img id="navbar-logo" src="/assets/images/UNO-Black.png" alt="UNO JERSEY" class="logo-img navbar-logo-hidden">
       </div>
     </div>
   </nav>
@@ -78,160 +86,78 @@
     </section>
   </main>
 
-  <!-- Modal Detail -->
-  <div class="modal-overlay" id="modalOverlay">
-    <div class="modal-container">
-      <button class="modal-close" id="modalClose">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-          <line x1="18" y1="6" x2="6" y2="18"/>
-          <line x1="6" y1="6" x2="18" y2="18"/>
-        </svg>
-      </button>
-
-      <div class="modal-content">
-        <!-- Header -->
-        <div class="modal-header">
-          <span class="modal-category" id="modalCategory">Category</span>
-          <h2 class="modal-title" id="modalTitle">Title</h2>
-          <p class="modal-description" id="modalDescription">Description</p>
-        </div>
-
-        <!-- Gallery -->
-        <div class="modal-gallery">
-          <div class="gallery-main">
-            <div class="gallery-image-container">
-              <img src="" alt="" id="galleryMainImage" class="gallery-main-image">
-              <div class="gallery-caption" id="galleryCaption">Caption</div>
-            </div>
-          </div>
-
-          <!-- Gallery Navigation -->
-          <button class="gallery-nav gallery-prev" id="galleryPrev">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-              <polyline points="15 18 9 12 15 6"/>
-            </svg>
-          </button>
-          <button class="gallery-nav gallery-next" id="galleryNext">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-              <polyline points="9 18 15 12 9 6"/>
-            </svg>
-          </button>
-
-          <!-- Thumbnails -->
-          <div class="gallery-thumbnails" id="galleryThumbnails">
-            <!-- Thumbnails will be populated by JavaScript -->
-          </div>
-
-          <!-- Gallery Counter -->
-          <div class="gallery-counter" id="galleryCounter">1 / 5</div>
-        </div>
-
-        <!-- Full Description -->
-        <div class="modal-full-description">
-          <p id="modalFullDescription">Full description goes here</p>
-        </div>
-
-        <!-- CTA Button -->
-        <div class="modal-cta">
-          <a href="/kreasikan/index.html" class="btn btn-primary">
-            Buat Jersey Seperti Ini
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-              <path d="M5 12h14M12 5l7 7-7 7"/>
-            </svg>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-
   <!-- Footer Section -->
-  <section class="footer-section">
+  <section id="footer" class="footer-section">
+
+    <!-- PART 1: Split Section - Temukan & Kreasi -->
     <div class="footer-split">
       <div class="footer-split-left">
-        <h2 class="footer-split-title">Kreasikan</h2>
-        <p class="footer-split-subtitle">Design your custom jersey with our easy-to-use builder</p>
-        <a href="/kreasikan/index.html" class="footer-split-button">
-          Start Creating
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-            <path d="M5 12h14M12 5l7 7-7 7"/>
+        <h2 class="footer-split-title">TEMUKAN</h2>
+        <p class="footer-split-subtitle">Cari jersey atau produk yang kamu mau</p>
+        <a href="/temukan.html" class="footer-split-button">
+          <span>Lihat Produk</span>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
         </a>
       </div>
       <div class="footer-split-right">
-        <h2 class="footer-split-title">Temukan</h2>
-        <p class="footer-split-subtitle">Find the perfect jersey for your team</p>
-        <a href="/temukan.html" class="footer-split-button">
-          Explore Collection
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-            <path d="M5 12h14M12 5l7 7-7 7"/>
+        <h2 class="footer-split-title">KREASI</h2>
+        <p class="footer-split-subtitle">Buat jersey custom sesuai desainmu</p>
+        <a href="/kreasikan/index.html" class="footer-split-button">
+          <span>Mulai Sekarang</span>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M17 8l4 4m0 0l-4 4m4-4H3" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
         </a>
       </div>
     </div>
 
-    <footer class="footer-main">
+    <!-- PART 2: Footer Bottom -->
+    <div class="footer-main">
       <div class="footer-container">
-        <div class="footer-columns">
-          <div class="footer-column">
-            <h3 class="footer-column-title">Navigasi</h3>
-            <ul class="footer-links">
-              <li><a href="/index.html">Home</a></li>
-              <li><a href="/temukan.html">Temukan</a></li>
-              <li><a href="/portfolio.html">Portfolio</a></li>
-              <li><a href="/kreasikan/index.html">Kreasikan</a></li>
-            </ul>
-          </div>
-          <div class="footer-column">
-            <h3 class="footer-column-title">Sports</h3>
-            <ul class="footer-links">
-              <li><a href="/index.html#products">Basketball</a></li>
-              <li><a href="/index.html#products">Futsal</a></li>
-              <li><a href="/index.html#products">Volleyball</a></li>
-              <li><a href="/index.html#products">Running</a></li>
-            </ul>
-          </div>
-          <div class="footer-column">
-            <h3 class="footer-column-title">Hubungi Kami</h3>
-            <ul class="footer-links">
-              <li><a href="https://wa.me/6281234567890">WhatsApp</a></li>
-              <li><a href="https://instagram.com/unojersey">Instagram</a></li>
-              <li><a href="mailto:hello@unojersey.com">Email</a></li>
-            </ul>
-          </div>
-        </div>
-
         <div class="footer-bottom">
           <div class="footer-bottom-brand">
-            <img src="/assets/images/UNO-White.png" alt="UNO JERSEY" class="footer-logo-small">
+            <img src="/assets/images/UNO-White.png" alt="UNO JERSEY" class="footer-logo-small" loading="lazy">
             <p class="footer-copyright">&copy; 2024 UNO JERSEY. All rights reserved.</p>
           </div>
           <div class="footer-bottom-links">
-            <a href="#">Privacy Policy</a>
-            <span class="divider">•</span>
-            <a href="#">Terms of Service</a>
+            <a href="#privacy">Privacy Policy</a>
+            <span class="divider">|</span>
+            <a href="#terms">Terms of Service</a>
           </div>
           <div class="footer-socials">
-            <a href="https://instagram.com/unojersey" aria-label="Instagram">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+            <a href="https://instagram.com/unojersey" target="_blank" aria-label="Instagram">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                <path d="M8 0C3.58173 0 0 3.58173 0 8C0 12.4183 3.58173 16 8 16C12.4183 16 16 12.4183 16 8C16 3.58173 12.4183 0 8 0ZM12.9427 10.0333C12.9043 10.7939 12.6905 11.5439 12.1363 12.0923C11.5766 12.6459 10.823 12.8521 10.0551 12.8901H5.9449C5.17699 12.8521 4.42342 12.646 3.86378 12.0923C3.30947 11.5439 3.09578 10.7939 3.05738 10.0333V5.96672C3.09578 5.20614 3.3095 4.45613 3.86378 3.90771C4.42342 3.35411 5.17699 3.14784 5.9449 3.10986H10.0551C10.8231 3.14784 11.5766 3.35402 12.1362 3.90771C12.6905 4.45613 12.9042 5.20614 12.9426 5.96672L12.9427 10.0333ZM8.00031 9.68031C8.92815 9.68031 9.68031 8.92815 9.68031 8.00031C9.68031 7.07247 8.92815 6.32031 8.00031 6.32031C7.07247 6.32031 6.32031 7.07247 6.32031 8.00031C6.32031 8.92815 7.07247 9.68031 8.00031 9.68031Z"/>
               </svg>
             </a>
-            <a href="https://wa.me/6281234567890" aria-label="WhatsApp">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+            <a href="https://tiktok.com/@unojersey" target="_blank" aria-label="TikTok">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                <path d="M8 0C3.58241 0 0 3.58241 0 8C0 12.4176 3.58241 16 8 16C12.4176 16 16 12.4176 16 8C16 3.58241 12.4176 0 8 0ZM12.0134 6.12103V7.20425C11.5027 7.20444 11.0064 7.10434 10.5383 6.90688C10.2373 6.77981 9.95694 6.61609 9.70047 6.41825L9.70816 9.75241C9.70494 10.5032 9.40791 11.2086 8.87031 11.7399C8.43281 12.1724 7.87844 12.4475 7.27756 12.5365C7.13638 12.5574 6.99269 12.5681 6.84737 12.5681C6.20416 12.5681 5.5935 12.3597 5.09397 11.9753C4.99997 11.9029 4.91006 11.8245 4.82447 11.7399C4.24184 11.1641 3.94141 10.3837 3.992 9.56262C4.03059 8.93766 4.28081 8.34163 4.69794 7.87447C5.24981 7.25628 6.02187 6.91316 6.84737 6.91316C6.99269 6.92406 7.12119 6.93506 7.27756 6.94497V7.34547V8.45959C7.14369 8.41544 7.00072 8.39116 6.85184 8.39116C6.09766 8.39116 5.4875 9.00647 5.49878 9.76122C5.50594 10.2441 5.76972 10.6662 6.15878 10.8989C6.34162 11.0083 6.55197 11.0735 6.77644 11.0884C6.95231 11.098 7.12119 11.0735 7.27756 11.0219C7.81641 10.8439 8.20512 10.3378 8.20512 9.74084L8.20691 7.50812V3.43187H9.69866C9.70009 3.57969 9.71509 3.72391 9.74297 3.86366C9.85556 4.42931 10.1744 4.92006 10.6182 5.25462C11.0051 5.54647 11.4869 5.71947 12.0091 5.71947C12.0095 5.71947 12.0138 5.71947 12.0134 5.71912V6.12103H12.0134Z"/>
               </svg>
             </a>
           </div>
         </div>
       </div>
-    </footer>
+    </div>
+
+    <!-- Three.js Footer Animation -->
+    <canvas id="footer-canvas" class="footer-canvas"></canvas>
   </section>
+
+  <!-- Navbar Script -->
+  <script src="/js/components/navbar.js"></script>
 
   <!-- GSAP -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+  <!-- Three.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+  <!-- Footer Animation Script -->
+  <script src="/js/components/section4-footer.js"></script>
 
   <!-- Portfolio JavaScript -->
   <script src="/js/portfolio/main.js"></script>
