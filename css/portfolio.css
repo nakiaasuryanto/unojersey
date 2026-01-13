@@ -25,57 +25,64 @@ body {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  z-index: 1000;
-  transition: all 0.3s ease;
-}
-
-.nav-content {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 20px 40px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.nav-tagline {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 48px;
-  line-height: 1;
-  transition: font-size 0.3s ease;
-}
-
-.nav-tagline-text .highlight {
-  color: #E63946;
-}
-
-.nav-logo-center {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-.logo-img {
-  height: 40px;
-  width: auto;
-  transition: all 0.3s ease;
-}
-
-.navbar-logo-hidden {
-  opacity: 0;
-  visibility: hidden;
-}
-
-.navbar-logo-visible {
-  opacity: 1;
-  visibility: visible;
+  right: 0;
+  height: var(--nav-height);
+  background-color: transparent;
+  z-index: var(--z-fixed);
+  padding: 0 var(--spacing-6);
+  transition: background-color 0.3s ease;
 }
 
 .navbar.scrolled {
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(10px);
-  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+  /* Fully transparent - no background */
+}
+
+.nav-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  position: relative;
+}
+
+/* Tagline on left side - starts at 48px, shrinks to 24px on scroll */
+.nav-tagline {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.nav-tagline-text {
+  font-family: 'Bebas Neue', sans-serif;
+  font-weight: 700;
+  font-size: 48px; /* Initial size, will animate to 24px */
+  color: var(--color-light);
+  white-space: nowrap;
+  will-change: font-size;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.navbar.scrolled .nav-tagline-text {
+  color: var(--color-dark);
+  text-shadow: none;
+}
+
+.nav-tagline-text .highlight {
+  color: var(--color-primary);
+}
+
+/* Logo centered in navbar */
+.nav-logo-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  right: 0;
+  left: 0;
+  top: 0;
+  bottom: 0;
 }
 
 /* ========================================
