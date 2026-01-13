@@ -7,8 +7,14 @@
    SCROLL SNAP PER SECTION
    ============================================ */
 
+/* Scroll snap only on desktop */
+@media (min-width: 769px) {
+  html {
+    scroll-snap-type: y mandatory;
+  }
+}
+
 html {
-  scroll-snap-type: y mandatory;
   scroll-behavior: smooth;
 }
 
@@ -17,14 +23,16 @@ body {
   padding: 0;
 }
 
-/* Snap targets for each section */
-.hero,
-.products,
-.temukan-preview,
-.portfolio,
-.footer-section {
-  scroll-snap-align: start;
-  scroll-snap-stop: always;
+/* Snap targets for each section (desktop only) */
+@media (min-width: 769px) {
+  .hero,
+  .products,
+  .temukan-preview,
+  .portfolio,
+  .footer-section {
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+  }
 }
 
 /* ============================================
@@ -88,6 +96,13 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+/* On mobile, move logo to the right */
+@media (max-width: 768px) {
+  .nav-logo-center {
+    justify-content: flex-end;
+  }
 }
 
 .nav-logo-center .logo-img {
@@ -865,6 +880,7 @@ body {
     padding: var(--spacing-8) 0 var(--spacing-4) 0;
     height: auto;
     min-height: 100vh;
+    margin-bottom: 20px;
   }
 
   .products .section-header {

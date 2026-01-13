@@ -15,6 +15,9 @@
     init() {
       console.log('UNO JERSEY - Initializing...');
 
+      // Setup preloader
+      this.setupPreloader();
+
       // Setup GSAP plugins
       this.setupGSAP();
 
@@ -27,10 +30,85 @@
       // Smooth scroll for all anchor links
       this.setupSmoothScroll();
 
-      // Loading state
-      this.hideLoading();
-
       console.log('UNO JERSEY - Ready!');
+    }
+
+    setupPreloader() {
+      const preloader = document.getElementById('preloader');
+      const preloaderBar = document.getElementById('preloaderBar');
+      const preloaderPercentage = document.getElementById('preloaderPercentage');
+
+      if (!preloader || !preloaderBar || !preloaderPercentage) return;
+
+      let progress = 0;
+      const targetProgress = 100;
+      const loadingInterval = 30; // Update every 30ms
+      const incrementPerTick = targetProgress / (2000 / loadingInterval); // Complete in ~2 seconds
+
+      // Simulate loading progress
+      const progressInterval = setInterval(() => {
+        // Add some randomness to make it feel more realistic
+        const randomIncrement = incrementPerTick + (Math.random() - 0.5) * 0.5;
+        progress = Math.min(progress + randomIncrement, targetProgress);
+
+        // Update UI
+        preloaderBar.style.width = progress + '%';
+        preloaderPercentage.textContent = Math.floor(progress);
+
+        // Check if complete
+        if (progress >= targetProgress) {
+          clearInterval(progressInterval);
+
+          // Wait a bit before hiding preloader
+          setTimeout(() => {
+            preloader.classList.add('preloader-hidden');
+
+            // Remove preloader from DOM after animation
+            setTimeout(() => {
+              preloader.style.display = 'none';
+            }, 600);
+          }, 400);
+        }
+      }, loadingInterval);
+
+      // Listen for actual page load
+      window.addEventListener('load', () => {
+        // If we haven't reached 100% yet, speed up to completion
+        const speedUpInterval = setInterval(() => {
+          if (progress < targetProgress) {
+            progress = Math.min(progress + 5, targetProgress);
+            preloaderBar.style.width = progress + '%';
+            preloaderPercentage.textContent = Math.floor(progress);
+
+            if (progress >= targetProgress) {
+              clearInterval(speedUpInterval);
+              setTimeout(() => {
+                preloader.classList.add('preloader-hidden');
+                setTimeout(() => {
+                  preloader.style.display = 'none';
+                }, 600);
+              }, 300);
+            }
+          } else {
+            clearInterval(speedUpInterval);
+          }
+        }, 50);
+      });
+
+      // Fallback: force complete after 4 seconds
+      setTimeout(() => {
+        if (!preloader.classList.contains('preloader-hidden')) {
+          progress = targetProgress;
+          preloaderBar.style.width = '100%';
+          preloaderPercentage.textContent = '100';
+          setTimeout(() => {
+            preloader.classList.add('preloader-hidden');
+            setTimeout(() => {
+              preloader.style.display = 'none';
+            }, 600);
+          }, 300);
+        }
+      }, 4000);
     }
 
     setupGSAP() {
@@ -139,18 +217,6 @@
           }
         });
       });
-    }
-
-    hideLoading() {
-      const loader = document.querySelector('.loader');
-      if (loader) {
-        setTimeout(() => {
-          loader.classList.add('hidden');
-          setTimeout(() => {
-            loader.remove();
-          }, 500);
-        }, 1000);
-      }
     }
   }
 

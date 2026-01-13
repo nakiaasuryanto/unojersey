@@ -26,6 +26,11 @@
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="/assets/images/UNO-Black.png">
 
+  <!-- Preload Critical Resources -->
+  <link rel="preload" href="/assets/images/UNO-White.png" as="image">
+  <link rel="preload" href="/assets/images/UNO-Black.png" as="image">
+  <link rel="preload" href="/assets/videos/hero-bg.mp4" as="video" type="video/mp4">
+
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -45,6 +50,23 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 </head>
 <body>
+  <!-- Preloader -->
+  <div class="preloader" id="preloader">
+    <div class="preloader-content">
+      <div class="preloader-logo">
+        <img src="/assets/images/UNO-Black.png" alt="UNO JERSEY">
+      </div>
+      <div class="preloader-progress">
+        <div class="preloader-bar-container">
+          <div class="preloader-bar-fill" id="preloaderBar"></div>
+        </div>
+        <div class="preloader-percentage">
+          <span id="preloaderPercentage">0</span>%
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- Navigation -->
   <nav class="navbar" id="navbar">
     <div class="nav-content">
@@ -191,35 +213,35 @@
               <!-- Model 1: Basketball -->
               <div class="product-model-item active" id="model-basketball" data-model="basketball">
                 <div class="product-model-image">
-                  <img src="/assets/images/Basket.png" alt="Basketball Jersey" class="product-model-img">
+                  <img src="/assets/images/Basket.png" alt="Basketball Jersey" class="product-model-img" loading="lazy">
                 </div>
               </div>
 
               <!-- Model 2: Futsal -->
               <div class="product-model-item" id="model-futsal" data-model="futsal">
                 <div class="product-model-image">
-                  <img src="/assets/images/Basic.png" alt="Futsal Jersey" class="product-model-img">
+                  <img src="/assets/images/Basic.png" alt="Futsal Jersey" class="product-model-img" loading="lazy">
                 </div>
               </div>
 
               <!-- Model 3: Volleyball -->
               <div class="product-model-item" id="model-volleyball" data-model="volleyball">
                 <div class="product-model-image">
-                  <img src="/assets/images/Polo.png" alt="Volleyball Jersey" class="product-model-img">
+                  <img src="/assets/images/Polo.png" alt="Volleyball Jersey" class="product-model-img" loading="lazy">
                 </div>
               </div>
 
               <!-- Model 4: Football -->
               <div class="product-model-item" id="model-football" data-model="football">
                 <div class="product-model-image">
-                  <img src="/assets/images/Baseball.png" alt="Football Jersey" class="product-model-img">
+                  <img src="/assets/images/Baseball.png" alt="Football Jersey" class="product-model-img" loading="lazy">
                 </div>
               </div>
 
               <!-- Model 5: Custom -->
               <div class="product-model-item" id="model-custom" data-model="custom">
                 <div class="product-model-image">
-                  <img src="/assets/images/Set.png" alt="Custom Jersey" class="product-model-img">
+                  <img src="/assets/images/Set.png" alt="Custom Jersey" class="product-model-img" loading="lazy">
                 </div>
               </div>
             </div>
@@ -469,7 +491,7 @@
         <!-- Footer Bottom -->
         <div class="footer-bottom">
           <div class="footer-bottom-brand">
-            <img src="/assets/images/UNO-White.png" alt="UNO JERSEY" class="footer-logo-small">
+            <img src="/assets/images/UNO-White.png" alt="UNO JERSEY" class="footer-logo-small" loading="lazy">
             <p class="footer-copyright">&copy; 2024 UNO JERSEY. All rights reserved.</p>
           </div>
           <div class="footer-bottom-links">
