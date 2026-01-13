@@ -1306,7 +1306,7 @@ body {
 @media (max-width: 768px) {
   .temukan-preview {
     padding-top: var(--spacing-6);
-    padding-bottom: var(--spacing-8);
+    padding-bottom: var(--spacing-16);
     min-height: auto;
     height: auto;
   }
@@ -1727,7 +1727,7 @@ body {
 
 @media (max-width: 768px) {
   .portfolio {
-    padding: var(--spacing-24) 0 var(--spacing-20) 0;
+    padding: var(--spacing-32) 0 var(--spacing-20) 0;
     overflow: visible;
   }
 
