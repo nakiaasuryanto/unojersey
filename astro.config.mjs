@@ -20,8 +20,8 @@ export default defineConfig({
       allowedHosts: true,
     },
     preview: {
-      // Allow all hosts for preview server (production)
-      allowedHosts: true,
+      // Allow specific hosts for preview server (production)
+      allowedHosts: ['unojersey.com', 'www.unojersey.com', 'localhost'],
     },
   },
 });
