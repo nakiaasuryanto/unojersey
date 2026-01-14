@@ -4,3 +4,4 @@ html_ver/
 public/kreasikan/
 .DS_Store
 public/.DS_Store
+.deployrc

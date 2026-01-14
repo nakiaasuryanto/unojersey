@@ -4,9 +4,10 @@
   "description": "Custom premium quality jerseys for your team. Basketball, Football, Futsal, Volleyball and more.",
   "main": "index.js",
   "scripts": {
+    "start": "astro preview --host 0.0.0.0 --port 9904",
     "dev": "astro dev",
     "build": "astro build",
-    "preview": "astro preview",
+    "preview": "astro preview --host 0.0.0.0 --port 9904",
     "astro": "astro"
   },
   "type": "commonjs",
