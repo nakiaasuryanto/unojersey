@@ -33,8 +33,14 @@ sudo -u "$DEPLOY_USER" npm run build
 
 echo "📁 Copying build to public_html..."
 PUBLIC_HTML="/home/$DEPLOY_USER/web/unojersey.com/public_html"
-sudo rm -rf "$PUBLIC_HTML"/*
+
+# Create directory if not exists
+sudo mkdir -p "$PUBLIC_HTML"
+
+# Copy build files
 sudo cp -r dist/* "$PUBLIC_HTML"/
+
+# Set ownership
 sudo chown -R "$DEPLOY_USER:$DEPLOY_USER" "$PUBLIC_HTML"
 
 echo "🚀 Starting PM2 preview server (as $DEPLOY_USER)..."
