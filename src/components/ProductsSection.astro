@@ -1,0 +1,872 @@
+---
+/**
+ * UNO JERSEY - Products Section Component
+ * Products showcase with mobile carousel and desktop layout
+ * From original index.html lines 116-472
+ * All 5 products: Baseball, Basic, Basket, Polo, Set
+ * Note: Images use paths like /images/Baseball.png
+ * Note: CTA links to /portfolio.html (becomes /portfolio in Astro)
+ */
+---
+
+<section class="products" id="products">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">KOLEKSI JERSEY</h2>
+      <p class="section-subtitle">
+        Pilih berbagai jenis jersey untuk olahraga favoritmu
+      </p>
+    </div>
+
+    <!-- Mobile Carousel (Hidden on Desktop) -->
+    <div class="products-mobile-carousel">
+      <!-- Slide 1: Baseball -->
+      <div class="product-slide">
+        <div class="slide-image">
+          <div class="product-model-image">
+            <img src="/images/Baseball.png" alt="Baseball Jersey" class="product-model-img" loading="lazy">
+          </div>
+        </div>
+        <a href="/portfolio" class="slide-cta-btn">Lihat Produk Lainnya</a>
+        <div class="slide-info">
+          <span class="product-info-label">BASEBALL</span>
+          <h3 class="product-info-title">Jersey Baseball</h3>
+          <p class="product-info-description">
+            Jersey baseball dengan potongan klasik dan material premium untuk kenyamanan sepanjang hari.
+          </p>
+          <ul class="product-info-features">
+            <li>Dry-fit material</li>
+            <li>Sublimation printing</li>
+            <li>Custom number &amp; text</li>
+            <li>Durable stitching</li>
+          </ul>
+          <div class="product-info-price">Mulai dari Rp 65.000</div>
+        </div>
+      </div>
+
+      <!-- Slide 2: Basic -->
+      <div class="product-slide">
+        <div class="slide-image">
+          <div class="product-model-image">
+            <img src="/images/Basic.png" alt="Basic Jersey" class="product-model-img" loading="lazy">
+          </div>
+        </div>
+        <a href="/portfolio" class="slide-cta-btn">Lihat Produk Lainnya</a>
+        <div class="slide-info">
+          <span class="product-info-label">BASIC</span>
+          <h3 class="product-info-title">Jersey Basic</h3>
+          <p class="product-info-description">
+            Jersey basic serba guna dengan desain minimalis yang cocok untuk berbagai kebutuhan tim.
+          </p>
+          <ul class="product-info-features">
+            <li>Dry-fit material</li>
+            <li>Sublimation printing</li>
+            <li>Fully customizable</li>
+            <li>Comfortable fit</li>
+          </ul>
+          <div class="product-info-price">Mulai dari Rp 50.000</div>
+        </div>
+      </div>
+
+      <!-- Slide 3: Basket -->
+      <div class="product-slide">
+        <div class="slide-image">
+          <div class="product-model-image">
+            <img src="/images/Basket.png" alt="Basket Jersey" class="product-model-img" loading="lazy">
+          </div>
+        </div>
+        <a href="/portfolio" class="slide-cta-btn">Lihat Produk Lainnya</a>
+        <div class="slide-info">
+          <span class="product-info-label">BASKET</span>
+          <h3 class="product-info-title">Jersey Basket</h3>
+          <p class="product-info-description">
+            Jersey basket dengan bahan breathable dan desain modern untuk performa maksimal di lapangan.
+          </p>
+          <ul class="product-info-features">
+            <li>Dry-fit material</li>
+            <li>Sublimation printing</li>
+            <li>Customizable number &amp; name</li>
+            <li>Anti-bacterial treatment</li>
+          </ul>
+          <div class="product-info-price">Mulai dari Rp 60.000</div>
+        </div>
+      </div>
+
+      <!-- Slide 4: Polo -->
+      <div class="product-slide">
+        <div class="slide-image">
+          <div class="product-model-image">
+            <img src="/images/Polo.png" alt="Polo Jersey" class="product-model-img" loading="lazy">
+          </div>
+        </div>
+        <a href="/portfolio" class="slide-cta-btn">Lihat Produk Lainnya</a>
+        <div class="slide-info">
+          <span class="product-info-label">POLO</span>
+          <h3 class="product-info-title">Jersey Polo</h3>
+          <p class="product-info-description">
+            Jersey polo dengan kerah elegant dan material premium untuk tampilan profesional dan nyaman.
+          </p>
+          <ul class="product-info-features">
+            <li>Dry-fit material</li>
+            <li>Sublimation printing</li>
+            <li>Custom logo &amp; text</li>
+            <li>Breathable &amp; anti-wrinkle</li>
+          </ul>
+          <div class="product-info-price">Mulai dari Rp 70.000</div>
+        </div>
+      </div>
+
+      <!-- Slide 5: Set -->
+      <div class="product-slide">
+        <div class="slide-image">
+          <div class="product-model-image">
+            <img src="/images/Set.png" alt="Set Jersey" class="product-model-img" loading="lazy">
+          </div>
+        </div>
+        <a href="/portfolio" class="slide-cta-btn">Lihat Produk Lainnya</a>
+        <div class="slide-info">
+          <span class="product-info-label">SET</span>
+          <h3 class="product-info-title">Jersey Set</h3>
+          <p class="product-info-description">
+            Satu set lengkap atasan dan bawahan dengan desain matching untuk tampilan tim yang kompak.
+          </p>
+          <ul class="product-info-features">
+            <li>Koordinasi atasan &amp; bawahan</li>
+            <li>Dry-fit material</li>
+            <li>Sublimation printing</li>
+            <li>Full customization</li>
+          </ul>
+          <div class="product-info-price">Mulai dari Rp 100.000</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Desktop Three-Column Layout (Hidden on Mobile) -->
+    <div class="products-container">
+      <!-- LEFT PANEL: Product Info Panel -->
+      <div class="product-info-panel">
+        <!-- Info for Product 1 (Baseball) -->
+        <div class="product-info-item" id="info-baseball">
+          <span class="product-info-label">BASEBALL</span>
+          <h3 class="product-info-title">Jersey Baseball</h3>
+          <p class="product-info-description">
+            Jersey baseball dengan potongan klasik dan material premium untuk kenyamanan sepanjang hari.
+          </p>
+          <ul class="product-info-features">
+            <li>Dry-fit material</li>
+            <li>Sublimation printing</li>
+            <li>Custom number &amp; text</li>
+            <li>Durable stitching</li>
+          </ul>
+          <div class="product-info-price">Mulai dari Rp 65.000</div>
+        </div>
+
+        <!-- Info for Product 2 (Basic) -->
+        <div class="product-info-item" id="info-basic" style="display: none;">
+          <span class="product-info-label">BASIC</span>
+          <h3 class="product-info-title">Jersey Basic</h3>
+          <p class="product-info-description">
+            Jersey basic serba guna dengan desain minimalis yang cocok untuk berbagai kebutuhan tim.
+          </p>
+          <ul class="product-info-features">
+            <li>Dry-fit material</li>
+            <li>Sublimation printing</li>
+            <li>Fully customizable</li>
+            <li>Comfortable fit</li>
+          </ul>
+          <div class="product-info-price">Mulai dari Rp 50.000</div>
+        </div>
+
+        <!-- Info for Product 3 (Basket) -->
+        <div class="product-info-item" id="info-basket" style="display: none;">
+          <span class="product-info-label">BASKET</span>
+          <h3 class="product-info-title">Jersey Basket</h3>
+          <p class="product-info-description">
+            Jersey basket dengan bahan breathable dan desain modern untuk performa maksimal di lapangan.
+          </p>
+          <ul class="product-info-features">
+            <li>Dry-fit material</li>
+            <li>Sublimation printing</li>
+            <li>Customizable number &amp; name</li>
+            <li>Anti-bacterial treatment</li>
+          </ul>
+          <div class="product-info-price">Mulai dari Rp 60.000</div>
+        </div>
+
+        <!-- Info for Product 4 (Polo) -->
+        <div class="product-info-item" id="info-polo" style="display: none;">
+          <span class="product-info-label">POLO</span>
+          <h3 class="product-info-title">Jersey Polo</h3>
+          <p class="product-info-description">
+            Jersey polo dengan kerah elegant dan material premium untuk tampilan profesional dan nyaman.
+          </p>
+          <ul class="product-info-features">
+            <li>Dry-fit material</li>
+            <li>Sublimation printing</li>
+            <li>Custom logo &amp; text</li>
+            <li>Breathable &amp; anti-wrinkle</li>
+          </ul>
+          <div class="product-info-price">Mulai dari Rp 70.000</div>
+        </div>
+
+        <!-- Info for Product 5 (Set) -->
+        <div class="product-info-item" id="info-set" style="display: none;">
+          <span class="product-info-label">SET</span>
+          <h3 class="product-info-title">Jersey Set</h3>
+          <p class="product-info-description">
+            Satu set lengkap atasan dan bawahan dengan desain matching untuk tampilan tim yang kompak.
+          </p>
+          <ul class="product-info-features">
+            <li>Koordinasi atasan &amp; bawahan</li>
+            <li>Dry-fit material</li>
+            <li>Sublimation printing</li>
+            <li>Full customization</li>
+          </ul>
+          <div class="product-info-price">Mulai dari Rp 100.000</div>
+        </div>
+      </div>
+
+      <!-- CENTER PANEL: Product Display with Window Frame -->
+      <div class="product-display-panel">
+        <div class="product-model-display">
+          <!-- Model 1: Baseball -->
+          <div class="product-model-item active" id="model-baseball" data-model="baseball">
+            <div class="product-model-image">
+              <img src="/images/Baseball.png" alt="Baseball Jersey" class="product-model-img" loading="lazy">
+            </div>
+          </div>
+
+          <!-- Model 2: Basic -->
+          <div class="product-model-item" id="model-basic" data-model="basic">
+            <div class="product-model-image">
+              <img src="/images/Basic.png" alt="Basic Jersey" class="product-model-img" loading="lazy">
+            </div>
+          </div>
+
+          <!-- Model 3: Basket -->
+          <div class="product-model-item" id="model-basket" data-model="basket">
+            <div class="product-model-image">
+              <img src="/images/Basket.png" alt="Basket Jersey" class="product-model-img" loading="lazy">
+            </div>
+          </div>
+
+          <!-- Model 4: Polo -->
+          <div class="product-model-item" id="model-polo" data-model="polo">
+            <div class="product-model-image">
+              <img src="/images/Polo.png" alt="Polo Jersey" class="product-model-img" loading="lazy">
+            </div>
+          </div>
+
+          <!-- Model 5: Set -->
+          <div class="product-model-item" id="model-set" data-model="set">
+            <div class="product-model-image">
+              <img src="/images/Set.png" alt="Set Jersey" class="product-model-img" loading="lazy">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT PANEL: Sport Icon Tabs -->
+      <div class="product-tabs-panel">
+        <div class="product-tabs-title">Pilih Produk</div>
+        <div class="sport-icon-tabs" role="tablist" aria-label="Product selection">
+          <!-- Tab 1: Baseball -->
+          <button
+            class="sport-icon-tab active"
+            role="tab"
+            aria-selected="true"
+            aria-controls="model-baseball"
+            aria-describedby="info-baseball"
+            data-sport="baseball"
+            title="Baseball">
+            <!-- Baseball icon -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <path d="M16 12a4 4 0 0 1-8 0"></path>
+              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+              <path d="M2 12h20"></path>
+            </svg>
+          </button>
+
+          <!-- Tab 2: Basic -->
+          <button
+            class="sport-icon-tab"
+            role="tab"
+            aria-selected="false"
+            aria-controls="model-basic"
+            aria-describedby="info-basic"
+            data-sport="basic"
+            title="Basic">
+            <!-- Shirt icon -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20.38 3.46L16 2a4 4 0 01-8 0L3.62 3.46a2 2 0 00-1.34 2.23l.58 3.47a1 1 0 00.99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 002-2V10h2.15a1 1 0 00.99-.84l.58-3.47a2 2 0 00-1.34-2.23z"></path>
+            </svg>
+          </button>
+
+          <!-- Tab 3: Basket -->
+          <button
+            class="sport-icon-tab"
+            role="tab"
+            aria-selected="false"
+            aria-controls="model-basket"
+            aria-describedby="info-basket"
+            data-sport="basket"
+            title="Basket">
+            <!-- Basketball icon -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+              <path d="M2 12h20"></path>
+            </svg>
+          </button>
+
+          <!-- Tab 4: Polo -->
+          <button
+            class="sport-icon-tab"
+            role="tab"
+            aria-selected="false"
+            aria-controls="model-polo"
+            aria-describedby="info-polo"
+            data-sport="polo"
+            title="Polo">
+            <!-- User icon -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+              <circle cx="12" cy="7" r="4"></circle>
+            </svg>
+          </button>
+
+          <!-- Tab 5: Set -->
+          <button
+            class="sport-icon-tab"
+            role="tab"
+            aria-selected="false"
+            aria-controls="model-set"
+            aria-describedby="info-set"
+            data-sport="set"
+            title="Set">
+            <!-- Star icon -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Products CTA -->
+    <div class="products-cta">
+      <a href="/portfolio" class="products-cta-btn">
+        Lihat Produk Lainnya
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <path d="M5 12h14M12 5l7 7-7 7"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .products {
+    min-height: 100vh;
+    height: 100vh;
+    padding: 0;
+    background: #ffffff;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .products .container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .section-header {
+    flex-shrink: 0;
+    margin-top: 80px;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  .section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 64px;
+    color: #1a1a1a;
+    letter-spacing: 0.025em;
+    line-height: 1;
+    margin-bottom: 8px;
+    text-align: center;
+  }
+
+  .section-subtitle {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    color: #4b5563;
+    line-height: 1.6;
+    text-align: center;
+  }
+
+  /* Mobile Carousel */
+  .products-mobile-carousel {
+    display: none;
+    flex: 1;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    gap: 0;
+    margin: 0 -24px;
+    padding: 0 24px;
+  }
+
+  .product-slide {
+    flex: 0 0 100%;
+    scroll-snap-align: start;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 16px 0;
+  }
+
+  .slide-image {
+    margin-bottom: 16px;
+  }
+
+  .slide-cta-btn {
+    display: inline-block;
+    padding: 0;
+    background: transparent;
+    color: #E63946;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    margin-bottom: 16px;
+  }
+
+  .slide-cta-btn:hover {
+    color: #c1121f;
+    transform: translateX(4px);
+  }
+
+  .slide-info {
+    text-align: center;
+    padding: 0 16px;
+  }
+
+  .product-info-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.025em;
+    text-transform: uppercase;
+    color: #E63946;
+    margin-bottom: 8px;
+    display: block;
+  }
+
+  .product-info-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 32px;
+    color: #457B9D;
+    margin-bottom: 12px;
+    line-height: 1.2;
+  }
+
+  .product-info-description {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    color: #4b5563;
+    line-height: 1.6;
+    margin-bottom: 16px;
+  }
+
+  .product-info-features {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 20px 0;
+    text-align: left;
+    display: inline-block;
+  }
+
+  .product-info-features li {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    color: #4b5563;
+    padding: 8px 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .product-info-features li::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    background-color: #E63946;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .product-info-price {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: #457B9D;
+    margin-top: 8px;
+  }
+
+  /* Desktop Layout */
+  .products-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 32px;
+    align-items: center;
+    flex: 1;
+    min-height: 0;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  /* Left Panel: Info */
+  .product-info-panel {
+    padding: 16px;
+  }
+
+  .product-info-item {
+    display: block;
+  }
+
+  .product-info-item[style*="display: none"] {
+    display: none;
+  }
+
+  /* Center Panel: Display */
+  .product-display-panel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 420px;
+  }
+
+  .product-model-display {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+
+  .product-model-item {
+    position: absolute;
+    inset: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .product-model-item.active {
+    display: flex;
+  }
+
+  .product-model-image {
+    width: fit-content;
+    height: 420px;
+    min-width: 320px;
+    max-width: 420px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    background: transparent;
+    border: 2px solid #d1d5db;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Window Header Bar */
+  .product-model-image::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 44px;
+    background: #e5e7eb;
+    border-bottom: 1px solid #d1d5db;
+    z-index: 5;
+  }
+
+  /* Window Control Circles (macOS style) */
+  .product-model-image::after {
+    content: '';
+    position: absolute;
+    top: 14px;
+    left: 16px;
+    z-index: 6;
+    box-shadow:
+      10px 0 0 #FF5F57,
+      20px 0 0 #FEBC2E,
+      30px 0 0 #28C840;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #FF5F57;
+  }
+
+  .product-model-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+    padding-top: 44px;
+    box-sizing: border-box;
+    background: transparent;
+    position: relative;
+    z-index: 5;
+  }
+
+  /* Right Panel: Tabs */
+  .product-tabs-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 16px;
+    align-items: center;
+  }
+
+  .product-tabs-title {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: #4b5563;
+    text-align: center;
+    align-self: center;
+  }
+
+  .sport-icon-tabs {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+  }
+
+  .sport-icon-tab {
+    width: 70px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: #ffffff;
+    border: 2px solid #d1d5db;
+    border-radius: 12px;
+  }
+
+  .sport-icon-tab:hover {
+    border-color: #E63946;
+    background: rgba(230, 57, 70, 0.05);
+  }
+
+  .sport-icon-tab.active {
+    border-color: #E63946;
+    background: #E63946;
+  }
+
+  .sport-icon-tab svg {
+    width: 32px;
+    height: 32px;
+    stroke: #6b7280;
+    transition: stroke 0.3s ease;
+  }
+
+  .sport-icon-tab:hover svg {
+    stroke: #E63946;
+  }
+
+  .sport-icon-tab.active svg {
+    stroke: #ffffff;
+  }
+
+  /* Products CTA */
+  .products-cta {
+    margin-top: 8px;
+    text-align: center;
+    flex-shrink: 0;
+  }
+
+  .products-cta-btn {
+    display: inline-block;
+    padding: 0;
+    background: linear-gradient(90deg, #E63946, #FF6B6B, #E63946);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 32px;
+    font-weight: 700;
+    text-decoration: none;
+    border-radius: 0;
+    transition: all 0.3s ease;
+    animation: gradient-walk 3s linear infinite;
+  }
+
+  .products-cta-btn:hover {
+    transform: translateX(4px);
+  }
+
+  @keyframes gradient-walk {
+    0% {
+      background-position: 0% center;
+    }
+    100% {
+      background-position: 200% center;
+    }
+  }
+
+  /* Desktop > 1024px */
+  @media (min-width: 1025px) {
+    .products-container {
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 40px;
+    }
+
+    .product-info-title {
+      font-size: 30px;
+    }
+
+    .product-model-image {
+      height: 480px;
+      border-radius: 14px;
+    }
+
+    .product-model-image::before {
+      height: 48px;
+    }
+
+    .product-model-image::after {
+      top: 16px;
+      left: 18px;
+      box-shadow:
+        12px 0 0 #FF5F57,
+        24px 0 0 #FEBC2E,
+        36px 0 0 #28C840;
+      width: 7px;
+      height: 7px;
+    }
+
+    .product-model-img {
+      padding-top: 48px;
+    }
+
+    .products-mobile-carousel {
+      display: none;
+    }
+  }
+
+  /* Responsive */
+  @media (max-width: 1024px) {
+    .section-title {
+      font-size: 48px;
+    }
+
+    .products-container {
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+
+    .product-display-panel {
+      order: -1;
+      min-height: 350px;
+    }
+
+    .sport-icon-tabs {
+      flex-direction: row;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .products-mobile-carousel {
+      display: none;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .products {
+      height: auto;
+      min-height: auto;
+      padding: 32px 0;
+    }
+
+    .section-header {
+      margin-top: 0;
+      margin-bottom: 16px;
+    }
+
+    .section-title {
+      font-size: 32px;
+    }
+
+    .products-container {
+      display: none;
+    }
+
+    .products-mobile-carousel {
+      display: flex;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .section-title {
+      font-size: 24px;
+    }
+
+    .product-info-title {
+      font-size: 24px;
+    }
+  }
+</style>
+
+<script>
+  // Product tabs functionality for desktop
+  const tabs = document.querySelectorAll('.sport-icon-tab');
+  const models = document.querySelectorAll('.product-model-item');
+  const infos = document.querySelectorAll('.product-info-item');
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      const sport = tab.dataset.sport;
+
+      // Update active tab
+      tabs.forEach(t => {
+        t.classList.remove('active');
+        t.setAttribute('aria-selected', 'false');
+      });
+      tab.classList.add('active');
+      tab.setAttribute('aria-selected', 'true');
+
+      // Update active model
+      models.forEach(m => {
+        m.classList.remove('active');
+        if (m.dataset.model === sport) {
+          m.classList.add('active');
+        }
+      });
+
+      // Update active info
+      infos.forEach(info => {
+        if (info.id === 'info-' + sport) {
+          info.style.display = 'block';
+        } else {
+          info.style.display = 'none';
+        }
+      });
+    });
+  });
+</script>

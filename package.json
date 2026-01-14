@@ -1,0 +1,33 @@
+{
+  "name": "uj-rev",
+  "version": "1.0.0",
+  "description": "Custom premium quality jerseys for your team. Basketball, Football, Futsal, Volleyball and more.",
+  "main": "index.js",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Digital360-Indonesia/unojersey.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Digital360-Indonesia/unojersey/issues"
+  },
+  "homepage": "https://github.com/Digital360-Indonesia/unojersey#readme",
+  "devDependencies": {
+    "@astrojs/alpinejs": "^0.4.9",
+    "@astrojs/tailwind": "^6.0.2",
+    "astro": "^5.16.9"
+  },
+  "dependencies": {
+    "gsap": "^3.14.2"
+  }
+}

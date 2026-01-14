@@ -1,0 +1,354 @@
+---
+/**
+ * UNO JERSEY - Portfolio Preview Component
+ * Preview section for portfolio page with masonry grid
+ */
+---
+
+<section class="portfolio" id="portfolio">
+  <div class="container">
+    <!-- Portfolio Header -->
+    <div class="portfolio-header">
+      <div class="portfolio-header-left">
+        <h2 class="portfolio-hashtag">#PORTFOLIO</h2>
+      </div>
+      <div class="portfolio-header-right">
+        <p class="portfolio-tagline">
+          Karya terbaik kami untuk tim-tim terbaik di Indonesia
+        </p>
+      </div>
+    </div>
+
+    <!-- Portfolio Grid -->
+    <div class="portfolio-grid">
+      <a href="/portfolio" class="portfolio-card">
+        <div class="portfolio-card-inner">
+          <img src="/images/portfolio/portfolio-1.jpg" alt="Portfolio 1" class="portfolio-image" loading="lazy" />
+          <div class="portfolio-overlay">
+            <div class="portfolio-content">
+              <span class="portfolio-category">Football</span>
+              <h3 class="portfolio-title">Jakarta FC</h3>
+              <p class="portfolio-description">Custom jersey dengan desain modern</p>
+            </div>
+          </div>
+        </div>
+      </a>
+
+      <a href="/portfolio" class="portfolio-card">
+        <div class="portfolio-card-inner">
+          <img src="/images/portfolio/portfolio-2.jpg" alt="Portfolio 2" class="portfolio-image" loading="lazy" />
+          <div class="portfolio-overlay">
+            <div class="portfolio-content">
+              <span class="portfolio-category">Basketball</span>
+              <h3 class="portfolio-title">Basket Club</h3>
+              <p class="portfolio-description">Jersey basket premium</p>
+            </div>
+          </div>
+        </div>
+      </a>
+
+      <a href="/portfolio" class="portfolio-card">
+        <div class="portfolio-card-inner">
+          <img src="/images/portfolio/portfolio-3.jpg" alt="Portfolio 3" class="portfolio-image" loading="lazy" />
+          <div class="portfolio-overlay">
+            <div class="portfolio-content">
+              <span class="portfolio-category">Futsal</span>
+              <h3 class="portfolio-title">Futsal Pro</h3>
+              <p class="portfolio-description">Desain sporty dan dinamis</p>
+            </div>
+          </div>
+        </div>
+      </a>
+
+      <a href="/portfolio" class="portfolio-card">
+        <div class="portfolio-card-inner">
+          <img src="/images/portfolio/portfolio-4.jpg" alt="Portfolio 4" class="portfolio-image" loading="lazy" />
+          <div class="portfolio-overlay">
+            <div class="portfolio-content">
+              <span class="portfolio-category">Volleyball</span>
+              <h3 class="portfolio-title">Volley Team</h3>
+              <p class="portfolio-description">Kualitas terbaik</p>
+            </div>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <!-- Portfolio CTA -->
+    <div class="portfolio-cta">
+      <a href="/portfolio" class="portfolio-cta-btn">
+        Lihat Semua Portfolio
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <path d="M5 12h14M12 5l7 7-7 7"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .portfolio {
+    min-height: 100vh;
+    height: 100vh;
+    padding: 0;
+    background-color: #ffffff;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Portfolio Header */
+  .portfolio-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-top: 80px;
+    margin-bottom: 20px;
+    gap: 24px;
+    flex-shrink: 0;
+  }
+
+  .portfolio-header-left {
+    flex: 1;
+  }
+
+  .portfolio-header-right {
+    flex: 1;
+    text-align: right;
+  }
+
+  .portfolio-hashtag {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 64px;
+    color: #1a1a1a;
+    letter-spacing: 0.025em;
+    line-height: 1;
+  }
+
+  .portfolio-tagline {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    color: #4b5563;
+    max-width: 400px;
+    margin-left: auto;
+    line-height: 1.6;
+  }
+
+  /* Portfolio Grid */
+  .portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: 1fr;
+    gap: 12px;
+    flex: 1;
+    min-height: 0;
+    overflow: hidden;
+  }
+
+  .portfolio-card {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: #1a1a1a;
+    aspect-ratio: 9 / 16;
+    text-decoration: none;
+  }
+
+  .portfolio-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .portfolio-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+
+  /* Portfolio Overlay */
+  .portfolio-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top,
+      rgba(0, 0, 0, 0.85) 0%,
+      rgba(0, 0, 0, 0.4) 50%,
+      rgba(0, 0, 0, 0.1) 100%
+    );
+    display: flex;
+    align-items: flex-end;
+    padding: 24px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .portfolio-card:hover .portfolio-overlay {
+    opacity: 1;
+  }
+
+  .portfolio-card:hover .portfolio-image {
+    transform: scale(1.08);
+  }
+
+  .portfolio-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 25px rgba(0, 0, 0, 0.15);
+  }
+
+  .portfolio-content {
+    color: #ffffff;
+    transform: translateY(20px);
+    transition: transform 0.3s ease;
+  }
+
+  .portfolio-card:hover .portfolio-content {
+    transform: translateY(0);
+  }
+
+  .portfolio-category {
+    display: inline-block;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    color: #E63946;
+    background-color: #ffffff;
+    padding: 4px 12px;
+    border-radius: 9999px;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.025em;
+  }
+
+  .portfolio-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 24px;
+    color: #ffffff;
+    margin-bottom: 8px;
+    line-height: 1.2;
+    letter-spacing: 0.025em;
+  }
+
+  .portfolio-description {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    color: #e5e7eb;
+    line-height: 1.5;
+  }
+
+  /* Portfolio CTA */
+  .portfolio-cta {
+    margin-top: 20px;
+    padding-bottom: 16px;
+    display: flex;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .portfolio-cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    color: #ffffff;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 9999px;
+    transition: all 0.3s ease;
+  }
+
+  .portfolio-cta-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(220, 39, 67, 0.3);
+  }
+
+  /* Responsive */
+  @media (max-width: 1024px) {
+    .portfolio-header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 8px;
+    }
+
+    .portfolio-header-right {
+      text-align: left;
+    }
+
+    .portfolio-tagline {
+      margin-left: 0;
+      max-width: 100%;
+    }
+
+    .portfolio-hashtag {
+      font-size: 48px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .portfolio {
+      padding: 24px 0 32px 0;
+      overflow: visible;
+      height: auto;
+      min-height: auto;
+    }
+
+    .portfolio-header {
+      margin-top: 0;
+      margin-bottom: 8px;
+    }
+
+    .portfolio-hashtag {
+      font-size: 32px;
+    }
+
+    .portfolio-tagline {
+      font-size: 14px;
+    }
+
+    .portfolio-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px;
+    }
+
+    .portfolio-title {
+      font-size: 16px;
+    }
+
+    .portfolio-description {
+      font-size: 10px;
+    }
+
+    .portfolio-overlay {
+      padding: 8px;
+    }
+
+    .portfolio-cta {
+      margin-top: 24px;
+      margin-bottom: 40px;
+    }
+
+    .portfolio-cta-btn {
+      font-size: 13px;
+      padding: 10px 20px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .portfolio-hashtag {
+      font-size: 24px;
+    }
+
+    .portfolio-tagline {
+      font-size: 12px;
+    }
+  }
+</style>

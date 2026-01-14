@@ -1,7 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600">
-  <rect width="600" height="600" fill="#0C2340"/>
-  <path d="M150 100 L450 100 L460 200 L440 220 L440 450 L160 450 L160 220 L140 200 Z" fill="#0C2340" stroke="#FFFFFF" stroke-width="4"/>
-  <path d="M250 100 Q300 120 350 100" fill="none" stroke="#FFFFFF" stroke-width="3"/>
-  <ellipse cx="380" cy="350" rx="50" ry="50" fill="#C8102E" stroke="#FFFFFF" stroke-width="2"/>
-  <text x="300" y="170" font-family="Arial" font-size="16" fill="#FFFFFF" text-anchor="middle">BASEBALL</text>
-</svg>

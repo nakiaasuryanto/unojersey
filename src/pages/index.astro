@@ -1,0 +1,30 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import ProductsSection from '../components/ProductsSection.astro';
+import TemukanPreview from '../components/TemukanPreview.astro';
+import PortfolioSection from '../components/PortfolioSection.astro';
+---
+
+<Layout
+  title="UNO JERSEY - Kreasikan Jersey Impianmu"
+  description="Custom premium quality jerseys for your team. Design your dream jersey with our easy-to-use customizer."
+  showNavbar={true}
+  showFooter={true}
+  navbarLogoColor="black"
+  showPreloader={true}
+>
+  <main>
+    <!-- Hero Section -->
+    <Hero />
+
+    <!-- Products Section -->
+    <ProductsSection />
+
+    <!-- Temukan Preview Section -->
+    <TemukanPreview />
+
+    <!-- Portfolio Section -->
+    <PortfolioSection />
+  </main>
+</Layout>

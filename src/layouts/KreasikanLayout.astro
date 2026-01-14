@@ -1,0 +1,50 @@
+---
+/**
+ * UNO JERSEY - KREASIKAN Layout
+ * Minimal layout for the jersey customization app
+ */
+
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = 'Kreasikan Jersey Custom | UNO JERSEY',
+  description = 'Buat jersey custom sesuai desainmu dengan UNO JERSEY jersey editor.'
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content={description} />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+
+    <!-- Tailwind CSS for KREASIKAN -->
+    <script is:inline src="https://cdn.tailwindcss.com"></script>
+
+    <!-- html2canvas for export -->
+    <script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  </head>
+  <body class="bg-gray-100 font-['Inter']">
+    <slot />
+  </body>
+</html>
+
+<style is:global>
+  /* KREASIKAN specific styles override */
+  body {
+    margin: 0;
+    padding: 0;
+  }
+</style>

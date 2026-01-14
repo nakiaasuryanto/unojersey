@@ -1,0 +1,282 @@
+---
+/**
+ * UNO JERSEY - Hero Component
+ * Full-screen hero section with video background
+ * Logo transitions to navbar on scroll
+ */
+
+interface Props {
+  navbarId?: string;
+}
+
+const { navbarId = 'navbar' } = Astro.props;
+---
+
+<section class="hero" id="hero">
+  <div class="hero-video-container">
+    <video class="hero-video" autoplay muted loop playsinline preload="metadata">
+      <source src="/videos/hero-bg.mp4" type="video/mp4">
+    </video>
+    <div class="hero-overlay"></div>
+  </div>
+
+  <div class="hero-content">
+    <div class="hero-center">
+      <img
+        src="/images/UNO-White.png"
+        alt="UNO JERSEY"
+        class="hero-logo"
+        id="hero-logo"
+        fetchpriority="high"
+      />
+    </div>
+  </div>
+
+  <div class="scroll-indicator" id="scroll-indicator">
+    <span>Scroll</span>
+    <svg class="scroll-arrow" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M12 5v14M19 12l-7 7-7-7"/>
+    </svg>
+  </div>
+</section>
+
+<style>
+  .hero {
+    min-height: 100vh;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Video Background */
+  .hero-video-container {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+  }
+
+  .hero-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.3) 0%,
+      rgba(0, 0, 0, 0.5) 50%,
+      rgba(0, 0, 0, 0.7) 100%
+    );
+  }
+
+  /* Hero Content - Logo centered */
+  .hero-content {
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    height: 100%;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .hero-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  /* Hero Logo */
+  .hero-logo {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 250px;
+    height: auto;
+    filter: drop-shadow(0 4px 20px rgba(0, 0, 0, 0.3));
+    will-change: width, opacity, transform;
+    z-index: 10;
+  }
+
+  /* Scroll Indicator */
+  .scroll-indicator {
+    position: absolute;
+    bottom: 48px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    color: #ffffff;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.025em;
+    cursor: pointer;
+    z-index: 10;
+  }
+
+  .scroll-indicator span {
+    opacity: 0.7;
+  }
+
+  .scroll-arrow {
+    color: #ffffff;
+    opacity: 0.7;
+    width: 24px;
+    height: 24px;
+  }
+
+  /* Responsive */
+  @media (max-width: 1024px) {
+    .hero-logo {
+      width: 180px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .hero {
+      min-height: 100vh;
+      height: auto;
+    }
+
+    .hero-logo {
+      width: 140px;
+    }
+
+    .scroll-indicator {
+      bottom: 32px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .hero-logo {
+      width: 120px;
+    }
+  }
+</style>
+
+<script define:vars={{ navbarId }}>
+  // Hero logo and navbar transition
+  (function() {
+    'use strict';
+
+    const heroLogo = document.getElementById('hero-logo');
+    const navbar = document.getElementById(navbarId);
+    const navbarLogo = document.getElementById('navbar-logo');
+    const scrollIndicator = document.getElementById('scroll-indicator');
+
+    console.log('Hero: Initializing - heroLogo:', !!heroLogo, 'navbar:', !!navbar);
+
+    if (!heroLogo) {
+      console.error('Hero: hero-logo element not found');
+      return;
+    }
+
+    if (!navbar) {
+      console.error('Hero: navbar element not found');
+      return;
+    }
+
+    // Configuration
+    const config = {
+      logoInitialWidth: 250,
+      logoFinalWidth: 60,
+      logoFadeStart: 0.3,
+      logoFadeEnd: 0.6,
+    };
+
+    function handleScroll() {
+      const scrollY = window.scrollY;
+      const windowHeight = window.innerHeight;
+      const scrollPercent = Math.min(scrollY / windowHeight, 1);
+
+      // Calculate logo scale based on scroll
+      const scale = Math.max(1 - (scrollPercent * 0.5), 0.24); // 250px to 60px
+      const newWidth = config.logoInitialWidth * scale;
+
+      // Calculate logo position (center → navbar center)
+      // Using transform: translateY from center
+      const heroCenterY = windowHeight / 2;
+      const navbarCenterY = 40; // Navbar height / 2
+      const targetY = navbarCenterY - heroCenterY; // Negative value (moving up)
+      const currentY = scrollPercent * targetY;
+
+      // Calculate opacity for hero logo
+      let heroOpacity = 1;
+      if (scrollPercent > config.logoFadeStart) {
+        const fadeRange = config.logoFadeEnd - config.logoFadeStart;
+        const fadeProgress = (scrollPercent - config.logoFadeStart) / fadeRange;
+        heroOpacity = Math.max(1 - fadeProgress, 0);
+      }
+
+      // Apply to hero logo
+      heroLogo.style.width = newWidth + 'px';
+      heroLogo.style.transform = `translate(-50%, calc(-50% + ${currentY}px))`;
+      heroLogo.style.opacity = heroOpacity.toString();
+
+      // Hide hero logo completely when scrolled past
+      if (heroOpacity <= 0) {
+        heroLogo.style.display = 'none';
+      } else {
+        heroLogo.style.display = 'block';
+      }
+
+      // Show navbar logo when hero logo starts fading (30% scroll)
+      if (navbarLogo) {
+        if (scrollPercent > config.logoFadeStart) {
+          // Show navbar logo (black)
+          navbarLogo.classList.remove('navbar-logo-hidden');
+          navbarLogo.classList.add('navbar-logo-visible');
+        } else {
+          // Hide navbar logo
+          navbarLogo.classList.remove('navbar-logo-visible');
+          navbarLogo.classList.add('navbar-logo-hidden');
+        }
+      }
+
+      // Hide hero logo when scrolled past 90%
+      if (scrollPercent > 0.9) {
+        heroLogo.style.display = 'none';
+      }
+    }
+
+    // Use requestAnimationFrame for smooth scroll
+    let ticking = false;
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          handleScroll();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    }, { passive: true });
+
+    // Initial call
+    handleScroll();
+
+    console.log('Hero: Logo transition initialized');
+
+    // Scroll indicator click
+    if (scrollIndicator) {
+      scrollIndicator.addEventListener('click', () => {
+        const nextSection = document.querySelector('.products');
+        if (nextSection) {
+          nextSection.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    }
+  })();
+</script>

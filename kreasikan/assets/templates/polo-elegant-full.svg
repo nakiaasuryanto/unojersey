@@ -1,7 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600">
-  <rect width="600" height="600" fill="#1B4965"/>
-  <rect x="150" y="100" width="300" height="400" rx="15" fill="#1B4965" stroke="#D4AF37" stroke-width="3"/>
-  <path d="M280 100 Q300 130 320 100 L320 150 L280 150 Z" fill="#D4AF37"/>
-  <path d="M280 150 L280 130 Q300 160 320 130 L320 150" fill="#1B4965" stroke="#D4AF37" stroke-width="2"/>
-  <text x="300" y="200" font-family="Arial" font-size="18" fill="#D4AF37" text-anchor="middle">POLO</text>
-</svg>

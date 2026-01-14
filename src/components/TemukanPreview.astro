@@ -1,0 +1,258 @@
+---
+/**
+ * UNO JERSEY - Temukan Preview Component
+ * Preview section for the Temukan page
+ */
+---
+
+<section class="temukan-preview" id="temukan-preview">
+  <div class="temukan-preview-container">
+    <div class="temukan-preview-header">
+      <h2 class="temukan-preview-title">Temukan Jersey Impianmu</h2>
+      <p class="temukan-preview-description">
+        Cari jersey atau produk yang kamu mau dengan mudah
+      </p>
+    </div>
+
+    <div class="temukan-preview-card">
+      <span class="preview-question-label">Apa yang kamu cari?</span>
+      <h3 class="preview-question-title">Jenis Jersey</h3>
+
+      <div class="preview-options-grid">
+        <div class="preview-option-card" data-value="football">
+          <span class="preview-option-label">Football</span>
+        </div>
+        <div class="preview-option-card" data-value="basketball">
+          <span class="preview-option-label">Basketball</span>
+        </div>
+        <div class="preview-option-card" data-value="futsal">
+          <span class="preview-option-label">Futsal</span>
+        </div>
+        <div class="preview-option-card" data-value="volleyball">
+          <span class="preview-option-label">Volleyball</span>
+        </div>
+        <div class="preview-option-card" data-value="others">
+          <span class="preview-option-label">Lainnya</span>
+        </div>
+      </div>
+
+      <div class="preview-action">
+        <a href="/temukan" class="preview-next-btn" id="preview-next-btn" data-sport="">
+          Cari Sekarang
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .temukan-preview {
+    min-height: 100vh;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #f3f4f6 0%, #ffffff 100%);
+    padding: 0;
+    position: relative;
+  }
+
+  .temukan-preview::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(circle at 30% 50%, rgba(230, 57, 70, 0.08) 0%, transparent 50%),
+      radial-gradient(circle at 70% 50%, rgba(29, 53, 87, 0.08) 0%, transparent 50%);
+    pointer-events: none;
+  }
+
+  .temukan-preview-container {
+    max-width: 800px;
+    width: 100%;
+    padding: 0 24px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .temukan-preview-header {
+    text-align: center;
+    margin-bottom: 24px;
+  }
+
+  .temukan-preview-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 64px;
+    color: #1a1a1a;
+    margin-bottom: 16px;
+    line-height: 1.2;
+  }
+
+  .temukan-preview-description {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    color: #4b5563;
+    line-height: 1.6;
+  }
+
+  /* Preview Card */
+  .temukan-preview-card {
+    border: 2px solid #d1d5db;
+    background: transparent;
+    border-radius: 12px;
+    padding: 24px 32px;
+    transition: all 0.3s ease;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .temukan-preview-card:hover {
+    border-color: #E63946;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+  }
+
+  .preview-question-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: #E63946;
+    margin-bottom: 12px;
+    display: block;
+    text-transform: uppercase;
+    letter-spacing: 0.025em;
+  }
+
+  .preview-question-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 32px;
+    color: #1a1a1a;
+    margin-bottom: 20px;
+  }
+
+  .preview-options-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+
+  .preview-options-grid .preview-option-card:last-child {
+    grid-column: 1 / -1;
+    max-width: 50%;
+    margin: 0 auto;
+  }
+
+  .preview-option-card {
+    border: 2px solid #d1d5db;
+    background: transparent;
+    border-radius: 8px;
+    padding: 8px 12px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    text-align: center;
+  }
+
+  .preview-option-card:hover {
+    border-color: #E63946;
+    background: rgba(230, 57, 70, 0.05);
+  }
+
+  .preview-option-card.selected {
+    border-color: #E63946;
+    background: #E63946;
+  }
+
+  .preview-option-card.selected .preview-option-label {
+    color: #ffffff;
+  }
+
+  .preview-option-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: #1a1a1a;
+  }
+
+  .preview-action {
+    display: flex;
+    justify-content: center;
+  }
+
+  .preview-next-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 16px 32px;
+    background: #E63946;
+    color: #ffffff;
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    text-decoration: none;
+    border: none;
+    border-radius: 0;
+    cursor: pointer;
+    transition: all 0.15s ease;
+  }
+
+  .preview-next-btn:hover {
+    background: #c62d3a;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .temukan-preview {
+      padding: 24px 0;
+      min-height: auto;
+      height: auto;
+    }
+
+    .temukan-preview-title {
+      font-size: 32px;
+    }
+
+    .temukan-preview-description {
+      font-size: 14px;
+    }
+
+    .preview-options-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .preview-options-grid .preview-option-card:last-child {
+      max-width: 50%;
+      margin: 0 auto;
+    }
+
+    .preview-question-title {
+      font-size: 24px;
+    }
+  }
+</style>
+
+<script>
+  // Option selection
+  const options = document.querySelectorAll('.preview-option-card');
+  const nextBtn = document.getElementById('preview-next-btn');
+
+  options.forEach(option => {
+    option.addEventListener('click', () => {
+      options.forEach(o => o.classList.remove('selected'));
+      option.classList.add('selected');
+
+      // Update the link with selected sport
+      const selectedSport = option.getAttribute('data-value');
+      if (nextBtn && selectedSport) {
+        nextBtn.href = `/temukan?sport=${selectedSport}`;
+      }
+    });
+  });
+</script>

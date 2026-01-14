@@ -1,8 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600">
-  <rect width="600" height="600" fill="#4A5568"/>
-  <path d="M150 100 L450 100 L480 180 L420 220 L420 350 L180 350 L180 220 L120 180 Z" fill="#4A5568" stroke="#00FF88" stroke-width="4"/>
-  <path d="M250 100 Q300 130 350 100" fill="none" stroke="#00FF88" stroke-width="3"/>
-  <path d="M150 380 L450 380 L460 480 L140 480 Z" fill="#4A5568" stroke="#00FF88" stroke-width="4"/>
-  <text x="300" y="170" font-family="Arial" font-size="16" fill="#00FF88" text-anchor="middle">TRAINING SET</text>
-  <text x="300" y="440" font-family="Arial" font-size="14" fill="#00FF88" text-anchor="middle">PANTS</text>
-</svg>
