@@ -38,8 +38,7 @@ sudo cp -r dist/* "$PUBLIC_HTML"/
 sudo chown -R "$DEPLOY_USER:$DEPLOY_USER" "$PUBLIC_HTML"
 
 echo "🚀 Starting PM2 preview server (as $DEPLOY_USER)..."
-cd "$PUBLIC_HTML"
-# Cek apakah app sudah ada di PM2
+# Jalankan dari project directory (bukan public_html) untuk akses vite.config.js
 if sudo -u "$DEPLOY_USER" pm2 list | grep -q "$PM2_APP_NAME"; then
     sudo -u "$DEPLOY_USER" pm2 restart "$PM2_APP_NAME"
 else
