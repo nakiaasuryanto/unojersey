@@ -16,7 +16,11 @@ export default defineConfig({
       assetsInlineLimit: 0,
     },
     server: {
-      // Allow all hosts for production preview
+      // Allow all hosts for dev server
+      allowedHosts: true,
+    },
+    preview: {
+      // Allow all hosts for preview server (production)
       allowedHosts: true,
     },
   },
