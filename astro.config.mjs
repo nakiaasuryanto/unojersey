@@ -15,5 +15,9 @@ export default defineConfig({
       // Ensure proper asset handling
       assetsInlineLimit: 0,
     },
+    server: {
+      // Allow all hosts for production preview
+      allowedHosts: true,
+    },
   },
 });

@@ -31,7 +31,14 @@ sudo -u "$DEPLOY_USER" npm install
 echo "🔨 Building Astro site (as $DEPLOY_USER)..."
 sudo -u "$DEPLOY_USER" npm run build
 
-echo "♻️ Restarting PM2 process (as $DEPLOY_USER)..."
+echo "📁 Copying build to public_html..."
+PUBLIC_HTML="/home/$DEPLOY_USER/web/unojersey.com/public_html"
+sudo rm -rf "$PUBLIC_HTML"/*
+sudo cp -r dist/* "$PUBLIC_HTML"/
+sudo chown -R "$DEPLOY_USER:$DEPLOY_USER" "$PUBLIC_HTML"
+
+echo "🚀 Starting PM2 preview server (as $DEPLOY_USER)..."
+cd "$PUBLIC_HTML"
 # Cek apakah app sudah ada di PM2
 if sudo -u "$DEPLOY_USER" pm2 list | grep -q "$PM2_APP_NAME"; then
     sudo -u "$DEPLOY_USER" pm2 restart "$PM2_APP_NAME"
@@ -40,5 +47,6 @@ else
 fi
 
 echo "✅ Deployment completed!"
+echo "🌐 Site running at: http://localhost:9904"
 echo "📊 PM2 Status:"
 sudo -u "$DEPLOY_USER" pm2 list
