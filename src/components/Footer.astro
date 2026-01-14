@@ -21,8 +21,8 @@
     <div class="footer-split-right">
       <h2 class="footer-split-title">KREASI</h2>
       <p class="footer-split-subtitle">Buat jersey custom sesuai desainmu</p>
-      <a href="#" class="footer-split-button">
-        <span>Mulai Sekarang</span>
+      <a href="/portfolio" class="footer-split-button">
+        <span>Lihat Portfolio</span>
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <path d="M17 8l4 4m0 0l-4 4m4-4H3" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
@@ -33,15 +33,17 @@
   <!-- PART 2: Footer Bottom -->
   <div class="footer-main">
     <div class="footer-container">
+      <!-- Footer Links - 3 Columns -->
+      <div class="footer-links-row">
+        <a href="/tentang-kami" class="footer-link-item">Tentang Kami</a>
+        <a href="https://unojersey.com/berita/" target="_blank" rel="noopener" class="footer-link-item">Berita</a>
+        <a href="https://wa.me/6285117088199?text=Saya%20mau%20pengajuan%20sponsorship%20di%20uno%20jersey" target="_blank" rel="noopener" class="footer-link-item">Sponsorship</a>
+      </div>
+
       <div class="footer-bottom">
         <div class="footer-bottom-brand">
           <img src="/images/UNO-White.png" alt="UNO JERSEY" class="footer-logo-small" loading="lazy">
           <p class="footer-copyright">&copy; 2024 UNO JERSEY. All rights reserved.</p>
-        </div>
-        <div class="footer-bottom-links">
-          <a href="#privacy">Privacy Policy</a>
-          <span class="divider">|</span>
-          <a href="#terms">Terms of Service</a>
         </div>
         <div class="footer-socials">
           <a href="https://www.instagram.com/unojersey_id" target="_blank" aria-label="Instagram">
@@ -169,7 +171,7 @@
 
   /* PART 2: Footer Bottom */
   .footer-main {
-    padding: 60px 24px 40px;
+    padding: 32px 24px 40px;
     background: #1a1a1a;
   }
 
@@ -178,13 +180,34 @@
     margin: 0 auto;
   }
 
+  /* Footer Links Row - 3 Columns */
+  .footer-links-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 48px;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+  }
+
+  .footer-link-item {
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+
+  .footer-link-item:hover {
+    color: #E63946;
+  }
+
   /* Footer Bottom */
   .footer-bottom {
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 24px;
-    padding-top: 32px;
+    padding-top: 24px;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     flex-wrap: wrap;
   }
@@ -204,27 +227,6 @@
     font-size: 13px;
     color: rgba(255, 255, 255, 0.5);
     margin: 0;
-  }
-
-  .footer-bottom-links {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
-
-  .footer-bottom-links a {
-    font-size: 13px;
-    color: rgba(255, 255, 255, 0.5);
-    text-decoration: none;
-    transition: color 0.3s ease;
-  }
-
-  .footer-bottom-links a:hover {
-    color: #E63946;
-  }
-
-  .footer-bottom-links .divider {
-    color: rgba(255, 255, 255, 0.3);
   }
 
   .footer-socials {

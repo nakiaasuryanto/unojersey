@@ -1,0 +1,183 @@
+---
+/**
+ * UNO JERSEY - Banner CTA Component
+ * Banner slider between Temukan Preview and Portfolio sections
+ */
+
+const whatsappUrl = 'https://wa.me/6285117088199?text=Halo%20UNO%20JERSEY,%20saya%20tertarik%20dengan%20produk%20jersey%20Anda';
+---
+
+<section class="banner-cta" id="banner-cta">
+  <div class="banner-slider">
+    <div class="banner-slider-track">
+      <a href={whatsappUrl} target="_blank" rel="noopener" class="banner-slide">
+        <img src="/images/section4-1.png" alt="UNO JERSEY 1" class="banner-image" loading="lazy">
+      </a>
+      <a href={whatsappUrl} target="_blank" rel="noopener" class="banner-slide">
+        <img src="/images/section4-2.png" alt="UNO JERSEY 2" class="banner-image" loading="lazy">
+      </a>
+      <a href={whatsappUrl} target="_blank" rel="noopener" class="banner-slide">
+        <img src="/images/section4-3.png" alt="UNO JERSEY 3" class="banner-image" loading="lazy">
+      </a>
+      <a href={whatsappUrl} target="_blank" rel="noopener" class="banner-slide">
+        <img src="/images/section4-4.png" alt="UNO JERSEY 4" class="banner-image" loading="lazy">
+      </a>
+      <a href={whatsappUrl} target="_blank" rel="noopener" class="banner-slide">
+        <img src="/images/section4-5.png" alt="UNO JERSEY 5" class="banner-image" loading="lazy">
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .banner-cta {
+    width: 100%;
+    padding: var(--spacing-12) 120px;
+    display: flex;
+    justify-content: center;
+    background: linear-gradient(135deg, #f3f4f6 0%, #ffffff 100%);
+    position: relative;
+  }
+
+  .banner-cta::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(circle at 30% 50%, rgba(230, 57, 70, 0.08) 0%, transparent 50%),
+      radial-gradient(circle at 70% 50%, rgba(29, 53, 87, 0.08) 0%, transparent 50%);
+    pointer-events: none;
+  }
+
+  .banner-slider {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 1136px;
+    height: 650px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    /* Custom scrollbar styling */
+    scrollbar-width: thin;
+    scrollbar-color: #E63946 #e5e7eb;
+  }
+
+  /* Webkit scrollbar (Chrome, Safari, Edge) */
+  .banner-slider::-webkit-scrollbar {
+    height: 8px;
+    border-radius: 10px;
+  }
+
+  .banner-slider::-webkit-scrollbar-track {
+    background: #e5e7eb;
+    border-radius: 10px;
+  }
+
+  .banner-slider::-webkit-scrollbar-thumb {
+    background: #E63946;
+    border-radius: 10px;
+  }
+
+  .banner-slider::-webkit-scrollbar-thumb:hover {
+    background: #c62d3a;
+  }
+
+  .banner-slider-track {
+    display: flex;
+    gap: 16px;
+    width: max-content;
+  }
+
+  .banner-slide {
+    width: 1136px;
+    flex: 0 0 auto;
+    scroll-snap-align: start;
+    text-decoration: none;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: var(--shadow-base);
+    transition: all var(--transition-normal);
+    cursor: pointer;
+  }
+
+  .banner-slide:hover {
+    box-shadow: var(--shadow-xl);
+    transform: translateY(-4px);
+  }
+
+  .banner-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* Responsive */
+  @media (max-width: 1024px) {
+    .banner-cta {
+      padding: var(--spacing-8) var(--spacing-6);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .banner-cta {
+      padding: var(--spacing-6) var(--spacing-4);
+    }
+
+    .banner-slider {
+      gap: 12px;
+    }
+
+    .banner-slide {
+      border-radius: 16px;
+    }
+  }
+</style>
+
+<script>
+  (function() {
+    'use strict';
+
+    const slider = document.querySelector('.banner-slider');
+    if (!slider) return;
+
+    let currentIndex = 0;
+    const slides = document.querySelectorAll('.banner-slide');
+    const totalSlides = slides.length;
+    const autoScrollDelay = 4000; // 4 seconds per slide
+    const slideWidth = 1136 + 16; // slide width + gap
+
+    // Auto scroll function
+    const autoScroll = () => {
+      currentIndex = (currentIndex + 1) % totalSlides;
+      slider.scrollTo({
+        left: currentIndex * slideWidth,
+        behavior: 'smooth'
+      });
+    };
+
+    // Start auto scroll
+    let autoScrollInterval = setInterval(autoScroll, autoScrollDelay);
+
+    // Pause auto scroll on user interaction
+    slider.addEventListener('mouseenter', () => {
+      clearInterval(autoScrollInterval);
+    });
+
+    // Resume auto scroll when user leaves
+    slider.addEventListener('mouseleave', () => {
+      autoScrollInterval = setInterval(autoScroll, autoScrollDelay);
+    });
+
+    // Also pause on touch devices
+    slider.addEventListener('touchstart', () => {
+      clearInterval(autoScrollInterval);
+    });
+
+    slider.addEventListener('touchend', () => {
+      autoScrollInterval = setInterval(autoScroll, autoScrollDelay);
+    });
+  })();
+</script>

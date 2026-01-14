@@ -50,29 +50,18 @@
 
 <style>
   .temukan-preview {
-    min-height: 100vh;
-    height: 100vh;
+    min-height: auto;
+    padding: 80px 0;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(135deg, #f3f4f6 0%, #ffffff 100%);
-    padding: 0;
+    background: #ffffff;
     position: relative;
   }
 
-  .temukan-preview::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background:
-      radial-gradient(circle at 30% 50%, rgba(230, 57, 70, 0.08) 0%, transparent 50%),
-      radial-gradient(circle at 70% 50%, rgba(29, 53, 87, 0.08) 0%, transparent 50%);
-    pointer-events: none;
-  }
-
   .temukan-preview-container {
+    width: 90vw;
     max-width: 800px;
-    width: 100%;
     padding: 0 24px;
     position: relative;
     z-index: 1;
@@ -210,9 +199,12 @@
   /* Responsive */
   @media (max-width: 768px) {
     .temukan-preview {
-      padding: 24px 0;
-      min-height: auto;
-      height: auto;
+      padding: 60px 0;
+    }
+
+    .temukan-preview-container {
+      width: 100%;
+      padding: 0 24px;
     }
 
     .temukan-preview-title {

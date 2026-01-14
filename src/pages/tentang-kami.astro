@@ -1,0 +1,158 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+---
+
+<Layout
+  title="Tentang Kami | UNO JERSEY"
+  description="Penyedia layanan pembuatan jersey berkualitas tinggi dengan melayani pemesanan ke seluruh Indonesia"
+  showNavbar={false}
+>
+  <!-- Navigation (with black logo, visible from start, static tagline) -->
+  <Navbar logoColor="black" showLogo={true} staticTagline={true} />
+
+  <main>
+    <!-- Hero Section (same style as portfolio) -->
+    <section class="tentang-hero">
+      <div class="hero-background"></div>
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <h1 class="hero-title">
+          <span class="title-line">Tentang</span>
+          <span class="title-line highlight">UNO JERSEY</span>
+        </h1>
+        <p class="hero-subtitle">Penyedia layanan pembuatan jersey berkualitas tinggi dengan melayani pemesanan ke seluruh Indonesia</p>
+      </div>
+    </section>
+
+    <!-- About Content Section -->
+    <section class="tentang-content">
+      <div class="content-container">
+        <div class="content-wrapper">
+          <p class="about-text">
+            Uno Jersey adalah penyedia layanan pembuatan jersey berkualitas tinggi. Berlokasi di Jl. Sidosermo IV Gg. III No. 37, Surabaya, kami hadir untuk memenuhi kebutuhan berbagai jenis jersey, mulai dari jersey badminton, baseball, basket, futsal, sepakbola, hingga untuk pelari (runner) dan pengendara sepeda (biker). Dengan cakupan layanan pemesanan ke seluruh Indonesia, kami siap melayani pelanggan dari Sabang hingga Merauke.
+          </p>
+          <p class="about-text">
+            Kami memahami bahwa setiap jersey memiliki cerita dan kebutuhan khusus. Oleh karena itu, kami menawarkan layanan free desain untuk memberikan keleluasaan bagi pelanggan dalam mengekspresikan ide kreatif mereka. Dengan menggunakan mesin cetak modern merek Grando serta bahan berkualitas seperti Drifit Nike, Drifit Milano, dan Drifit Brazil, kami menjamin kenyamanan, ketahanan, dan estetika pada setiap produk yang dihasilkan.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  /* Hero Section (same as portfolio) */
+  .tentang-hero {
+    position: relative;
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .hero-background {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, #E63946 0%, #F4A261 100%);
+  }
+
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.3);
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    color: white;
+    padding: 120px 40px 60px;
+  }
+
+  .hero-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(48px, 10vw, 120px);
+    line-height: 0.9;
+    margin-bottom: 20px;
+  }
+
+  .title-line {
+    display: block;
+    opacity: 1;
+  }
+
+  .title-line.highlight {
+    color: #F1FA8C;
+  }
+
+  .hero-subtitle {
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(16px, 2vw, 20px);
+    font-weight: 300;
+    opacity: 1;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  /* Content Section */
+  .tentang-content {
+    padding: 80px 40px;
+    background: #ffffff;
+  }
+
+  .content-container {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .content-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .about-text {
+    font-family: 'Inter', sans-serif;
+    font-size: 18px;
+    line-height: 1.8;
+    color: #4b5563;
+    text-align: justify;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .tentang-hero {
+      min-height: 40vh;
+    }
+
+    .hero-subtitle {
+      font-size: 14px;
+    }
+
+    .hero-content {
+      padding: 100px 20px 40px;
+    }
+
+    .tentang-content {
+      padding: 60px 20px;
+    }
+
+    .about-text {
+      font-size: 16px;
+      text-align: left;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .hero-content {
+      padding: 100px 20px 40px;
+    }
+
+    .about-text {
+      font-size: 15px;
+    }
+  }
+</style>

@@ -147,13 +147,13 @@ const taglineClass = staticTagline ? 'tagline-static' : '';
     }
 
     .nav-tagline-text {
-      font-size: 28px;
+      font-size: 32px;
     }
   }
 
   @media (max-width: 480px) {
     .nav-tagline-text {
-      font-size: 22px;
+      font-size: 32px;
     }
 
     .nav-logo-center .logo-img {
@@ -198,7 +198,7 @@ const taglineClass = staticTagline ? 'tagline-static' : '';
       // Animate tagline size on scroll (skip for static tagline)
       if (navTaglineText && !isStaticTagline) {
         const scrollPercent = Math.min(scrollY / windowHeight, 1);
-        const newSize = Math.max(48 - (scrollPercent * 24), 24); // Shrink from 48px to 24px
+        const newSize = Math.max(48 - (scrollPercent * 16), 32); // Shrink from 48px to 32px
         navTaglineText.style.fontSize = newSize + 'px';
       }
     }
