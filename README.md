@@ -1,158 +1,172 @@
-# UNO JERSEY - Hybrid Website Project
+# UNO JERSEY - Custom Jersey Website
 
 Custom premium quality jerseys for your team. Basketball, Football, Futsal, Volleyball and more.
 
 ## Project Overview
 
-UNO JERSEY is a hybrid website combining:
-- **Static HTML pages** for homepage and quiz (no build required)
-- **React app** for interactive jersey customization (built with Vite)
+UNO JERSEY is a static website built with **Astro**, featuring:
+- Static pages for showcasing products and portfolio
+- Dynamic blog/news pages with custom routes
+- Modern, responsive design with Tailwind CSS
+- Smooth animations with GSAP
 
 ## Technology Stack
 
-### HTML Pages (index.html, temukan.html)
-- Pure HTML5/CSS3
-- Vanilla JavaScript (ES6+)
-- Three.js (3D footer animation)
-- GSAP (scroll animations)
-
-### React App (kreasikan-app)
-- React 18+
-- Vite (build tool)
-- Tailwind CSS
-- React Three Fiber (optional 3D)
+- **Framework:** Astro 5.x
+- **Styling:** Tailwind CSS 6.x
+- **Animations:** GSAP 3.x
+- **Interactivity:** Alpine.js
+- **Deployment:** Nginx (static site hosting)
 
 ## Project Structure
 
 ```
-/uj-rev
-├── /public                    # HTML pages (static)
-│   ├── index.html            # Homepage
-│   ├── temukan.html          # Quiz/Find page
-│   ├── /css
-│   │   ├── design-system.css # Shared design tokens
-│   │   ├── homepage.css
-│   │   └── temukan.css
-│   ├── /js
-│   │   ├── main.js
-│   │   └── /components
-│   │       ├── navbar.js
-│   │       ├── hero.js
-│   │       ├── products.js
-│   │       ├── portfolio.js
-│   │       └── footer.js
-│   └── /assets
-│       └── /images
-│           ├── UNO-Black.png
-│           ├── UNO-White.png
-│           ├── products/
-│           └── portfolio/
-│
-├── /kreasikan-app            # React application
-│   ├── /src
-│   │   ├── /components
-│   │   │   ├── Navbar.jsx
-│   │   │   └── JerseyCustomizer.jsx
-│   │   ├── /styles
-│   │   ├── App.jsx
-│   │   └── main.jsx
-│   ├── /dist                 # Build output
-│   ├── package.json
-│   └── vite.config.js
-│
-├── INTEGRATION_GUIDE.md      # Detailed integration docs
-└── README.md                 # This file
+unojersey/
+├── /src
+│   ├── /pages                 # Astro pages
+│   │   ├── index.astro        # Homepage
+│   │   ├── temukan.astro      # Find/Quiz page
+│   │   ├── portfolio.astro    # Portfolio showcase
+│   │   ├── tentang-kami.astro  # About us
+│   │   └── /berita
+│   │       ├── index.astro    # Blog index
+│   │       └── [slug].astro   # Dynamic blog posts
+│   ├── /components            # Reusable components
+│   │   ├── Navbar.astro
+│   │   ├── Hero.astro
+│   │   ├── ProductsSection.astro
+│   │   ├── PortfolioSection.astro
+│   │   ├── TemukanPreview.astro
+│   │   ├── BannerCTA.astro
+│   │   └── Footer.astro
+│   └── /layouts
+│       ├── Layout.astro       # Main layout
+│       └── KreasikanLayout.astro
+├── /public                    # Static assets
+│   ├── /images               # Images and media
+│   ├── /videos               # Video files
+│   ├── favicon.png
+│   └── favicon.svg
+├── astro.config.mjs          # Astro configuration
+├── vite.config.js            # Vite configuration
+├── package.json
+├── deploy.sh                 # Deployment script
+└── README.md
 ```
 
 ## Getting Started
 
-### HTML Pages (No build required)
+### Local Development
 
 ```bash
-cd public
-python -m http.server 8000
-# or
-npx serve .
-```
-
-Open http://localhost:8000
-
-### React App
-
-```bash
-cd kreasikan-app
+# Install dependencies
 npm install
+
+# Start development server
 npm run dev
 ```
 
-Open http://localhost:3000
+Open http://localhost:4321
 
-## Building for Production
+### Build for Production
 
 ```bash
-# Build React app
-cd kreasikan-app
+# Build the site
 npm run build
 
-# Copy to public folder
-cp -r dist ../public/kreasikan
-
-# Deploy entire /public folder
+# Preview production build locally
+npm run preview
 ```
 
-## Design System
+## Deployment
 
-All design tokens are defined in `/public/css/design-system.css`:
+### Prerequisites
 
-- **Colors:** Primary (#E63946), Secondary (#1D3557), Light (#FAFAFA)
-- **Typography:** Bebas Neue (headings), Inter (body)
-- **Spacing:** 8px base unit system
-- **Components:** Buttons, cards, forms, navigation
+- VPS with Nginx installed
+- SSH access to server
+- Git repository (GitHub/GitLab)
 
-## Pages
+### Deployment Process
 
-| Page | Path | Technology |
-|------|------|------------|
-| Homepage | `/index.html` | HTML/CSS/JS |
-| Products | `/index.html#products` | HTML/CSS/JS |
-| Portfolio | `/index.html#portfolio` | HTML/CSS/JS |
-| Temukan (Quiz) | `/temukan.html` | HTML/CSS/JS |
-| Kreasikan (Customizer) | `/kreasikan/index.html` | React |
+1. **Configure deployment** by creating `.deployrc` file (see `.deployrc.example`)
 
-## Key Features
+2. **Make deploy script executable:**
+   ```bash
+   chmod +x deploy.sh
+   ```
 
-- **Hero Section:** Animated landing with call-to-action
-- **Products Grid:** Jersey category selection
-- **Portfolio Showcase:** Lightbox gallery
-- **Quiz System:** Find your jersey style
-- **Jersey Customizer:** Interactive 3D design tool
-- **3D Footer:** Three.js particle animation
+3. **Deploy to server:**
+   ```bash
+   ./deploy.sh
+   ```
 
-## Data Flow
+The deployment script will:
+- Pull latest code from Git
+- Install dependencies
+- Build Astro site
+- Copy `dist/` folder to Nginx document root
+- Set proper file permissions
 
+### Nginx Configuration
+
+Configure Nginx to serve static files directly (see `nginx.conf` in project):
+
+```nginx
+server {
+    listen 443 ssl;
+    server_name your-domain.com;
+
+    root /path/to/public_html/dist;
+    index index.html;
+
+    location / {
+        try_files $uri $uri/ $uri/index.html =404;
+    }
+
+    # Cache static assets
+    location ~* \.(js|css|png|jpg|jpeg|gif|ico|svg|webp|mp4)$ {
+        expires 1y;
+        add_header Cache-Control "public, immutable";
+    }
+}
 ```
-Temukan (Quiz)
-    ↓ URL parameters
-Kreasikan (React App)
-    ↓
-Customization Complete
-    ↓
-WhatsApp Order
-```
 
-## Navigation
+**Important:** No PM2 or Node.js process needed for static site deployment.
 
-- **Homepage → Products:** Smooth scroll to #products
-- **Homepage → Kreasikan:** Navigate to `/kreasikan/index.html`
-- **Temukan → Kreasikan:** Pass URL parameters (type, style, name, phone)
+## Available Pages
+
+| Page | Route | Description |
+|------|-------|-------------|
+| Homepage | `/` | Landing page with hero, products, and portfolio |
+| Temukan | `/temukan` | Find/quiz page for jersey style |
+| Portfolio | `/portfolio` | Portfolio showcase |
+| Tentang Kami | `/tentang-kami` | About us page |
+| Berita | `/berita` | Blog/news index |
+| Blog Posts | `/berita/[slug]` | Dynamic blog post pages |
 
 ## Scripts
 
 | Command | Description |
 |---------|-------------|
-| `npm run dev` | Start React dev server |
-| `npm run build` | Build React app for production |
-| `npm run preview` | Preview React build |
+| `npm run dev` | Start development server |
+| `npm run build` | Build for production |
+| `npm run preview` | Preview production build |
+| `./deploy.sh` | Deploy to server |
+
+## Design System
+
+### Colors
+- Primary Red: `#E63946`
+- Primary Blue: `#1D3557`
+- Light Gray: `#FAFAFA`
+
+### Typography
+- Headings: Bebas Neue
+- Body: Inter
+
+### Spacing
+- Base unit: 8px
+- Consistent spacing scale
 
 ## Browser Support
 
@@ -163,19 +177,36 @@ WhatsApp Order
 
 ## Contributing
 
-1. Follow the hybrid architecture patterns
-2. Use design system variables for consistency
-3. Test both HTML and React portions
-4. Update INTEGRATION_GUIDE.md for structural changes
+1. Follow Astro best practices
+2. Use Tailwind CSS utility classes
+3. Test on multiple screen sizes
+4. Optimize images before adding to `/public`
+5. Update documentation for significant changes
 
-## Documentation
+## Troubleshooting
 
-See [INTEGRATION_GUIDE.md](./INTEGRATION_GUIDE.md) for:
-- Detailed architecture explanation
-- Development workflow
-- Deployment steps
-- Data flow between pages
-- Troubleshooting
+### Build Issues
+
+If build fails, try:
+```bash
+rm -rf node_modules .astro dist
+npm install
+npm run build
+```
+
+### Routing Issues
+
+If pages show 404 on server:
+- Check Nginx `try_files` configuration
+- Ensure `dist/` folder is copied correctly
+- Verify file permissions on server
+
+### Deployment Issues
+
+Check `.deployrc` configuration:
+- Ensure correct user and branch
+- Verify Git repository URL
+- Check server paths and permissions
 
 ## License
 
